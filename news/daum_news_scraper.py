@@ -28,7 +28,7 @@ def link_scraper(start_date, end_date, end_page):
     current_date = int(start_date)
     while current_date <= int(end_date):
         current_page = 1
-        while current_page <= int(input(end_page)):
+        while current_page <= int(end_page):
             url = f"{base_url}{current_page}&regDate={current_date}"
             try:
                 driver.get(url)
