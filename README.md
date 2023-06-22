@@ -1,1 +1,2 @@
-# DA28_final_PagePalette
+# PagePalette
+### email letter service: IT news and book recommendation
