@@ -11,6 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from tqdm import tqdm
+from datetime import datetime, timedelta
 
 # 일주일 단위로 it 전체 기사 링크 저장하기
 def link_scraper(start_date, end_date, end_page):
@@ -86,35 +87,65 @@ def news_data(start_date, end_date, df):
         url = df.loc[index, 'URL']
         driver.get(url)
         time.sleep(0.5)
+
+        # 날짜 및 시간
+        try:
+            date_elems = driver.find_element_by_css_selector('#mArticle > div.head_view > div.info_view > span:nth-child(2) > span').text
+            date = date_elems[:11].replace('.', '-')
+        except:
+            try:
+                date_elems = driver.find_element_by_css_selector('#mArticle > div.head_view > div.info_view > span > span').text
+                date = date_elems[:11].replace('.', '-')
+            except Exception as e:
+                print(f"An exception occurred: {str(e)}")
+
+        # 24시간 내에 있는지
+        article_time = date_elems.split('.')
+        year = int(article_time[0])
+        month = int(article_time[1])
+        day = int(article_time[2])
+        times = article_time[-1]
+        temp_time = times.split(':')
+        hour = int(temp_time[0].strip())
+        minute = int(temp_time[-1].strip())
+        
+        # 기사가 작성된 시간
+        target_time = datetime(year, month, day, hour, minute)
+        # 현재부터 24시간 전
+        time_limit = datetime.now() - timedelta(hours=24)
+        
+        if target_time < time_limit:
+            df = df.drop([index], axis=0)
+            continue
         
         # 신문사
         company = driver.find_element_by_css_selector('#kakaoServiceLogo').text
 
         # 기자명
-        reporter = driver.find_element_by_css_selector('#mArticle > div.head_view > div.info_view > span:nth-child(1)').text
-        reporter = re.sub(r'\[|\]|\(|\)', '', reporter)
-        if '인턴' in reporter:
-            reporter = reporter.replace('인턴', '').split(' ')[0]
-        elif reporter == '입력':
+        try:
+            reporter = driver.find_element_by_css_selector('#mArticle > div.head_view > div.info_view > span:nth-child(1)').text
+            reporter = re.sub(r'\[|\]|\(|\)', '', reporter)
+            if '인턴' in reporter:
+                reporter = reporter.replace('인턴', '').split(' ')[0]
+            elif reporter == '입력':
+                reporter = '정보없음'
+            else:
+                reporter = reporter.split(' ')[0]
+        except:
             reporter = '정보없음'
-        else:
-            reporter = reporter.split(' ')[0]
         
         # 제목
         title = driver.find_element_by_css_selector('#mArticle > div.head_view > h3').text
         
         # 본문
         context = driver.find_element_by_css_selector('#mArticle > div.news_view.fs_type1').text
-        
-        # 날짜
-        date = df.loc[index, 'URL'].split('/')[-1][:8]
-        
+            
         # DataFrame에 값 추가
+        df.loc[index, '날짜'] = date
         df.loc[index, '신문사'] = company
         df.loc[index, '기자명'] = reporter
         df.loc[index, '제목'] = title
-        df.loc[index, '본문'] = context
-        df.loc[index, '날짜'] = date
+        df.loc[index, '본문'] = context        
         
     driver.quit()
 
@@ -124,9 +155,11 @@ def news_data(start_date, end_date, df):
     df = df.assign(일=df['날짜'].dt.day)
     df = df.assign(요일=df['날짜'].dt.weekday)
 
+    df.drop_duplicates(subset=['기자명', '제목'], inplace=True)
+
     return df
 
-# df.drop_duplicates(subset=['기자명', '제목'], inplace=True)
-# df.to_csv(f'{start_date}_{end_date}_news.csv', index=False)
+# df.reset_index(drop=True, inplace=True)
 
+# df.to_csv(f'{start_date}_{end_date}_news.csv', index=False)
 # print("news_data 저장 완료.")
