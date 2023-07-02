@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <h1>구독</h1>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id_email">Email 입력</label>
+                        {{ form.email }}
+                    </div>
+                    {% if error_message %}
+                        <p class="error-message">{{ error_message }}</p>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="id_reception_time">메일수신시간</label><br>
+                        {% for choice in form.reception_time %}
+                            {{ choice }}
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_weekend">주말수신선택</label><br>
+                        {% for choice in form.weekend %}
+                            {{ choice }}
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        <label for="id_book_service">도서서비스 선택</label><br>
+                        {% for choice in form.book_service %}
+                            {{ choice }}
+                        {% endfor %}
+                    </div>
+                    <button type="submit">구독하기</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

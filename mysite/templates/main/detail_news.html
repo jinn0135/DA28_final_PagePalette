@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="detail_container">
+    <a href="{% url 'main:detail_news' %}" class="detail_news_url">
+        news
+    </a>
+    <a href="{% url 'main:detail_books' %}" class="detail_books_url">
+        books
+    </a>
+</div>
+<div class="sample message">news 설명 들어가는 곳</div>
+{% endblock %}
