@@ -1,0 +1,37 @@
+<svg width="149" height="173" viewBox="0 0 149 173" fill="none" xmlns="http://www.w3.org/2000/svg">
+<mask id="mask0_47_25" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="99" y="23" width="50" height="100">
+<rect x="100.5" y="24.5" width="47" height="97" fill="#D9D9D9" stroke="black" stroke-width="3"/>
+</mask>
+<g mask="url(#mask0_47_25)">
+<circle cx="99" cy="73" r="48.5" fill="#D990FF" stroke="black" stroke-width="3"/>
+</g>
+<mask id="mask1_47_25" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="49" y="0" width="99" height="131">
+<path d="M51.0136 23.6495L93.0182 2.56349L145.562 107.234L103.557 128.32L51.0136 23.6495Z" fill="black" stroke="black" stroke-width="3"/>
+</mask>
+<g mask="url(#mask1_47_25)">
+<rect x="50.8145" y="24.4819" width="47" height="97" fill="#01A938" stroke="black" stroke-width="3"/>
+</g>
+<mask id="mask2_47_25" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="49" y="0" width="99" height="131">
+<path d="M51.0136 23.6495L93.0182 2.56349L145.562 107.234L103.557 128.32L51.0136 23.6495Z" fill="black" stroke="black" stroke-width="3"/>
+</mask>
+<g mask="url(#mask2_47_25)">
+<rect x="50.8145" y="24.4819" width="47" height="97" fill="#01A938" stroke="black" stroke-width="3"/>
+</g>
+<mask id="mask3_47_25" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="15" width="100" height="131">
+<path d="M97.7209 122.382L55.3794 143.404L2.65941 38.623L45.001 17.6006L97.7209 122.382Z" fill="black" stroke="black" stroke-width="3"/>
+</mask>
+<g mask="url(#mask3_47_25)">
+<rect x="97.925" y="121.552" width="47.3399" height="97.0143" transform="rotate(-179.9 97.925 121.552)" fill="#FFCF5D" stroke="black" stroke-width="3"/>
+</g>
+<mask id="mask4_47_25" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="49" y="123" width="51" height="50">
+<rect width="50" height="50" transform="matrix(1.19249e-08 1 1 -1.19249e-08 49.1001 123)" fill="#D9D9D9"/>
+</mask>
+<g mask="url(#mask4_47_25)">
+<mask id="mask5_47_25" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="-1" y="123" width="101" height="50">
+<rect x="1.5" y="1.5" width="47" height="97" transform="matrix(1.19249e-08 1 1 -1.19249e-08 -0.899902 123)" fill="#D9D9D9" stroke="black" stroke-width="3"/>
+</mask>
+<g mask="url(#mask5_47_25)">
+<circle cx="50" cy="50" r="48.5" transform="matrix(1.19249e-08 1 1 -1.19249e-08 -0.899902 73)" fill="#FF6158" stroke="black" stroke-width="3"/>
+</g>
+</g>
+</svg>
