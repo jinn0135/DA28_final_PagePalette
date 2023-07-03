@@ -1,12 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="detail_container">
-    <a href="{% url 'main:detail_news' %}" class="detail_news_url">
-        news
-    </a>
-    <a href="{% url 'main:detail_books' %}" class="detail_books_url">
-        books
-    </a>
-</div>
-<div class="sample message">여기는 메인</div>
+    <main id="main">
+        <div class="container">
+            <h2>매일 매일 최신 소식을 받아보세요</h2>
+
+            <p>원하신다면, 읽을만한 책도 추천해드려요.</p>
+            <!-- <a href="www.google.com"><img src="./images/buttons/red.png" alt="구독하기"></a>
+            <a href="www.google.com"><img src="./images/buttons/blue.png" alt="구독하기"></a> -->
+
+            <a href="{% url 'main:detail_news' %}"><button>뉴스</button></a>
+            <a href="{% url 'main:detail_books' %}"><button>도서 큐레이션</button></a>
+            <!-- <button class="mouse"><img src="./images/buttons/blue.png" alt=""></button> -->
+        </div>
+    </main>
 {% endblock %}
+
+
+{#<div class="detail_container">#}
+{#    <a href="{% url 'main:detail_news' %}" class="detail_news_url">#}
+{#        news#}
+{#    </a>#}
+{#    <a href="{% url 'main:detail_books' %}" class="detail_books_url">#}
+{#        books#}
+{#    </a>#}
+{#</div>#}
+{#<div class="sample message">여기는 메인</div>#}
+
+

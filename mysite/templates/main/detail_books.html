@@ -10,3 +10,43 @@
 </div>
 <div class="sample message">books 설명 들어가는 곳</div>
 {% endblock %}
+
+
+
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Palette</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+<header>
+    <div class="container">
+        <div class="left">
+            <a href="{% url 'home' %}"><img src="{% static 'images/icons/icon_long.png' %}" alt="logo"></a>
+        </div>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'subscribe' %}"><button>구독하기</button></a>
+                </li>
+                <li>
+                    <a href="{% url 'login' %}"><button>로그인</button></a>/<a href="{% url 'signup' %}"><button>회원가입</button></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <h1 style="color: white">도서 페이지</h1>
+</main>
+</body>
+</html>

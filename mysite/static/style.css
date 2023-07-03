@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Poppins:wght@400;700&family=Varela+Round&display=swap');
+.Nanum{
+    font-family: 'Nanum Pen Script', cursive;
+}
+/*font-family: 'Nanum Pen Script', cursive;*/
+/*font-family: 'Poppins', sans-serif;*/
+/*font-family: 'Varela Round', sans-serif;*/
+{% load static %}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a, a:link, a:visited{
+    color: inherit;
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+.container{
+    width: 1920px;
+    margin: 0 auto; /* 위쪽과 아래 : 0, 좌 우  : 자동  */
+
+}
+
+header{
+    position: fixed;
+    color: black;
+    top: 0;
+    z-index: 1; /* 스크롤 시 가려짐 방지 */
+    width: 100%;
+    /* height: 7vh; */
+    padding: 0.5rem; /*나중에 공간 너무 떠보이면 여기를 수정 */
+    background: linear-gradient(338deg, #FFF 0%, rgba(250, 255, 0, 0.72) 100%);
+
+
+}
+
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+header .left{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+header .left > img{ /* 메인페이지용 */
+    width: 150px;
+    height: 50px;
+}
+
+header .left > a > img{ /*메인 페이지 외 페이지들 용 */
+    width: 150px;
+    height: 50px;
+}
+
+header nav ul{
+    display: flex; /* 가로로 배치 */
+}
+
+header nav ul li{
+    padding: 10px;
+}
+
+header button{
+    background: transparent;
+    border: 0;
+    cursor: pointer; /* 마우스 올렸을 때 활성화 표시 */
+}
+
+header h1{
+    font-size: 1.5rem; /* html 태그(최상위 요소) 의 2배 크기  (최상위 요소의 크기가 16으로 설정되어 32가 됨)*/
+    font-weight: bold;
+}
+
+header nav ul li button{
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+}
+
+header nav ul li button:hover{
+    font-size: 1rem;
+    font-weight: bold;
+    color: blue;
+}
+
+
+main{
+    width: 100%;
+    height: 100vh; /* 뷰포트 높이의 100% */
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('../static/images/background.jpg') center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center; /* flex container, grid container에서 요소끼리 어떻게 띄울지 지정 */
+    align-items: center; /* 직계 자손들의 align-self값을 그룹으로 지정. flex에서는 교차축으로, grid에서는 block axis로. */
+    text-align: center;
+}
+
+
+main h4{
+    font-size: 2rem;
+    color: white;
+}
+
+main h2{
+    font-size: 3.5rem;
+    margin: 2rem 0; /* 위/아래 2rem, 좌/우 0. */
+    letter-spacing: 3px;
+    color: white;
+}
+
+main p{
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    color: white;
+}
+
+main a>button{
+    font-size: 2rem;
+    width: 270px;
+    height: 100px;
+    background-color: transparent;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 1rem 2rem;
+    margin-top: 3rem;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+main button.mouse{
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: upDown 1s ease-in-out infinite; /* iteration-count direction fill-mode; */
+    cursor: pointer;
+}
+
+@keyframes upDown {
+    0%{
+        bottom: 1rem;
+    }
+    50%{
+        bottom: 1.5rem;
+    }
+    100%{
+        bottom: 1rem;
+    }
+}
+
+
+
+
+
+
+footer{
+    width: 100%;
+    height: 15vh;
+
+    background-color: rgb(128, 128, 128);
+}
+
+.box1{
+    position: relative;
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 100px;
+background: linear-gradient(227deg, rgba(255, 231, 239, 0.30) 0%, rgba(255, 255, 255, 0.29) 49.48%, rgba(255, 219, 232, 0.00) 100%);
+box-shadow: -5px -5px 20px 0px rgba(255, 255, 255, 0.30) inset, 0px 4px 200px 0px rgba(255, 0, 107, 0.20) inset, -50px -50px 200px 0px rgba(156, 1, 47, 0.15);
+}
+
+
+
+.box2{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: linear-gradient(137deg, #D9D9D9 0%, rgba(255, 90, 150, 0.93) 0.01%, #FC004C 100%);
+}
+
+.box-mask{
+    width: 500px;
+    height: 500px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: #000;
+}
