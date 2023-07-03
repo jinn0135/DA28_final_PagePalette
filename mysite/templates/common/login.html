@@ -1,37 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
 
-<h1>로그인 페이지</h1>
-<div>
-    <a href="{% url 'common:login' %}">로그인하기</a>
-</div>
-<form method="post" class=“post-form” action="{% url 'common:login' %}">
-    {% csrf_token %}
-    {% include "form_errors.html" %}
-    <div class="form-group">
-        <label form="username">사용자 이름</label>
-        <input type="text" class="form-control" name="username" id="username" value="{{ form.username.value|default_if_none:'' }}">
-    </div>
-    <div class="form-group">
-        <label form="password">비밀번호</label>
-        <input type="password" class="form-control" name="password" id="password" value="{{ form.password.value|default_if_none:'' }}">
-    </div>
-    <button type="submit">로그인</button>
-</form>
+{% block content %}
 
-<!--<!doctype html>-->
-<!--<html lang=“en”>-->
-<!--<head>-->
-<!--    <meta charset=“UTF-8”>-->
-<!--    <meta name=“viewport”-->
-<!--          content=“width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0”>-->
-<!--    <meta http-equiv=“X-UA-Compatible” content=“ie=edge”>-->
-<!--    <title>Sign Up</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--    <h1>회원가입 페이지</h1>-->
-<!--    <input type=“email”>이메일 입력-->
-<!--    <input type=“password”>비밀번호 입력-->
-<!--    <input type=“radio”>성별-->
-<!--    <input type=“radio”>연령대-->
-<!--    <input type=“submit”>제출-->
-<!--</body>-->
-<!--</html>-->
+<main id="main">
+    <div class="login-container">
+        <ul>
+            <li><h4>로그인</h4></li>
+
+            <div class="login-form">
+
+
+                <form method="post" class=“post-form” action="{% url 'common:login' %}">
+                    {% csrf_token %}
+                    {% include "form_errors.html" %}
+                    <li class="id">
+                        <label for="username"></label>
+                        <input type="text" name="username" id="username" value="{{ form.username.value|default_if_none:'' }}" placeholder="사용자 이름" style="font-size: 1rem;
+                        width: 200px;
+                        height: 40px;
+                        flex-shrink: 0;
+                        border-radius: 10px;
+                        border: 1.5px solid white;
+                        background: rgba(255, 251, 251, 0.25);">
+                    </li>
+
+                    <li class="ps">
+                        <label for="password"></label>
+                        <input type="password" name="password" id="password" value="{{ form.password.value|default_if_none:'' }}" placeholder="비밀번호 입력" style="font-size: 1rem;
+                        width: 200px;
+                        height: 40px;
+                        flex-shrink: 0;
+                        border-radius: 10px;
+                        border: 1.5px solid white;
+                        background: rgba(255, 251, 251, 0.232);">
+
+                    </li>
+
+                    <li>
+                        <button type="submit" value="로그인" style="
+                        font-size: 1rem;
+                        width: 200px;
+                        height: 40px;
+                        flex-shrink: 0;
+                        border-radius: 10px;
+                        border: 1.5px solid white;
+                        background: rgba(255, 251, 251, 0.25);">로그인
+                        </button>
+                    </li>
+
+
+
+                </form>
+
+
+
+            </div>
+
+        </ul>
+    </div>
+</main>
+
+{% endblock %}
+
+
+
+
+
+{#<h1>로그인 페이지</h1>#}
+{#<div>#}
+{#    <a href="{% url 'common:login' %}">로그인하기</a>#}
+{#</div>#}
+{#<form method="post" class=“post-form” action="{% url 'common:login' %}">#}
+{#    {% csrf_token %}#}
+{#    {% include "form_errors.html" %}#}
+{#    <div class="form-group">#}
+{#        <label form="username">사용자 이름</label>#}
+{#        <input type="text" class="form-control" name="username" id="username" value="{{ form.username.value|default_if_none:'' }}">#}
+{#    </div>#}
+{#    <div class="form-group">#}
+{#        <label form="password">비밀번호</label>#}
+{#        <input type="password" class="form-control" name="password" id="password" value="{{ form.password.value|default_if_none:'' }}">#}
+{#    </div>#}
+{#    <button type="submit">로그인</button>#}
+{#</form>#}
