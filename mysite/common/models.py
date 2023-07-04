@@ -1,64 +1,5 @@
 from django.db import models
 
-# Create your models here.
-# class User(models.Model):
-#     email = models.EmailField(unique=True, max_length=100)
-#     pw = models.CharField(max_length=30)
-#
-#     GENDER_CHOICES = (
-#         ('M', '남자'),
-#         ('F', '여자'),
-#     )
-#     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
-#
-#     AGE_CHOICES = (
-#         (10, '10대'),
-#         (20, '20대'),
-#         (30, '30대'),
-#         (40, '40대'),
-#         (50, '50대'),
-#         (60, '60대'),
-#     )
-#     age = models.CharField(max_length=3, choices=AGE_CHOICES)
-
-    # create_at = models.DateTimeField(auto_now_add=True)
-    # update_at = models.DateTimeField(auto_now=True)
-
-    # def __str__(self):
-    #     return self.email
-    # class Meta:
-    #     db_table = 'users' # forms.py에 작성 됨
-
-
-# class UserOption(models.Model):
-#     email = models.EmailField(unique=True, max_length=100)
-#
-#     TIME_CHOICES = (
-#         (0, '오전 7시'),
-#         (1, '오후 5시'),
-#     )
-#     WEEKEND_CHOICES = (
-#         (0, '주말메일 받지 않기'),
-#         (1, '주말에도 메일 받기'),
-#     )
-#     BOOKSERVICE_CHOICES = (
-#         (0, '도서 서비스 받지 않기'),
-#         (1, '도서 서비스 구독 하기'),
-#     )
-#     reception_time = models.CharField(max_length=1, choices=TIME_CHOICES)
-#     weekend = models.CharField(max_length=1, choices=WEEKEND_CHOICES)
-#     book_service = models.CharField(max_length=1, choices=BOOKSERVICE_CHOICES)
-#
-#     def __str__(self):
-#         return self.email, self.book_service
-
-# class BookService(models.Model):
-#     email = models.EmailField(unique=True, max_length=100)
-#     book_service =
-#     large_category =
-#     middle_category =
-#     selected_book_isbn =
-
 # 모델 가져오기
 class UserInfo(models.Model):
     GENDER_CHOICES = (
@@ -238,6 +179,7 @@ class Gyobo13(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -253,6 +195,7 @@ class Gyobo29(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -262,12 +205,13 @@ class Gyobo29(models.Model):
 class Gyobo(models.Model):
     title = models.CharField(max_length=100, blank=True, null=True)
     author = models.CharField(max_length=100, blank=True, null=True)
-    genre_1 = models.CharField(max_length=200, blank=True, null=True)
-    genre_2 = models.CharField(max_length=300, blank=True, null=True)
-    brank = models.SmallIntegerField(blank=True, null=True)
+    large_category = models.CharField(max_length=200, blank=True, null=True)
+    middle_category = models.CharField(max_length=300, blank=True, null=True)
+    b_rank = models.SmallIntegerField(blank=True, null=True)
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -283,6 +227,7 @@ class Gyobo01(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -298,6 +243,7 @@ class Gyobo03(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -313,6 +259,7 @@ class Gyobo19(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -328,6 +275,7 @@ class Gyobo23(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -343,6 +291,7 @@ class Gyobo05(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -358,6 +307,7 @@ class Gyobo15(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -373,6 +323,7 @@ class Gyobo17(models.Model):
     rate = models.FloatField(blank=True, null=True)
     count = models.SmallIntegerField(blank=True, null=True)
     isbn = models.BigIntegerField(blank=True, null=True)
+    img = models.CharField(max_length=300, blank=True, null=True)
 
     class Meta:
         managed = False

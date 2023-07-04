@@ -100,7 +100,7 @@ main{
     top: 70px;
     width: 100%;
     height: 100vh; /* 뷰포트 높이의 100% */
-    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('../static/images/background.jpg') center center;
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.8)), url('./images/background.jpg') center center;
     background-size: cover;
     display: flex;
     justify-content: center; /* flex container, grid container에서 요소끼리 어떻게 띄울지 지정 */
@@ -229,10 +229,6 @@ box-shadow: -5px -5px 20px 0px rgba(255, 255, 255, 0.30) inset, 0px 4px 200px 0p
     justify-content: space-between;
 }
 
-.id{
-    padding: 10 10 10 10;
-}
-
 .genderselector{
     text-align: left;
 }
@@ -249,4 +245,45 @@ box-shadow: -5px -5px 20px 0px rgba(255, 255, 255, 0.30) inset, 0px 4px 200px 0p
     color: white;
     font-weight: bold;
     cursor: pointer;
+}
+
+
+.palette{
+    color:#D2B4DE;
+    color:#A2D9CE;
+}
+
+/* 회원가입 바디 부분을 설정하는 코드 */
+
+
+
+.main-container-signup{
+    text-align: center;
+    padding: 8px 8px;
+    /* border: 1px solid white; */
+    display: block;
+    justify-content: center;
+    align-items: center;
+}
+
+.typing-list{ /*회원가입 폼에서 아이디 입력 필드와 비밀번호 입력 필드 사이의 간격을 주기 위함 */
+
+    padding: 11px 8px 0px 8px; /* top right bottom left */
+}
+
+.input-form{
+    font-size: 1rem;
+    width: 200px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1.5px solid white;
+    background: rgba(255, 251, 251, 0.796);
+}
+
+.dropdown-list{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
 }

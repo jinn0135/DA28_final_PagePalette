@@ -2,13 +2,25 @@ from django import forms
 from .models import UserInfo, UserOption
 
 class SignupForm(forms.ModelForm):
-    gender = forms.ChoiceField(choices=UserInfo.GENDER_CHOICES, widget=forms.RadioSelect)
-    age = forms.ChoiceField(choices=UserInfo.AGE_CHOICES, widget=forms.RadioSelect)
-
+    gender = forms.ChoiceField(choices=UserInfo.GENDER_CHOICES, widget=forms.Select())
+    age = forms.ChoiceField(choices=UserInfo.AGE_CHOICES, widget=forms.Select())
+    pw = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = UserInfo
-        db_table = 'user'
+        db_table = 'user_info'
         fields = ['email', 'pw', 'gender', 'age']
+        labels = {
+            'email':'이메일',
+            'pw':'비밀번호',
+            'gender':'성별',
+            'age':'연령대',
+        }
+
+    def clean_pw(self):
+        pw = self.cleaned_data.get('pw')
+        if len(pw) < 8:
+            raise forms.ValidationError("비밀번호는 8글자 이상이어야 합니다.")
+        return pw
 
 class SubscribeForm(forms.ModelForm):
     reception_time = forms.ChoiceField(choices=UserOption.TIME_CHOICES,
@@ -19,7 +31,7 @@ class SubscribeForm(forms.ModelForm):
                                      widget=forms.RadioSelect)
     class Meta:
         model = UserOption
-        db_table = 'option'
+        db_table = 'user_option'
         fields = ['email','reception_time','weekend','book_service'
                   # 'large_category','middle_category','selected_book_isbn'
                   ]
