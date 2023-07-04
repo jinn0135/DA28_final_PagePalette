@@ -1,5 +1,9 @@
 from datetime import datetime
 import csv
+import wordcloud
+from wordcloud import WordCloud
+import cv2
+import matplotlib.pyplot as plt
 
 # 페이지 기본 폼에서 마지막 페이지를 설정해주면 url 리스트를 반환
 def page_lists(endpage):

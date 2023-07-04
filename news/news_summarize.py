@@ -1,45 +1,40 @@
-import gensim
-from gensim.summarization.summarizer import summarize
-import openai
-import os
+import requests
+import re
+import json
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+def summarize_text(text):
+    url = 'https://naveropenapi.apigw.ntruss.com/text-summary/v1/summarize'
+    client_id = '7ie1n9fatv'
+    client_secret = 'ALFMzAMwzrzHuVUr1kA7gT3NdcffWgu0Dq2L2H1o'
 
-def news_summarize(df, num_article):
-    # gensim summarize() 사용
-    summaries = []
-    for n in range(num_article):
-        article = df['본문'][n]
-        summary = summarize(article, word_count=100)
-        summaries.append(summary)
-    # openai 사용    
-    summary_article = []
-    for article in summaries:
-        article_length = len(article)
-        
-        prompt = 'Summarize in Korean: {}\n'.format(article)
-        
-        max_context_length = 4096
-        if len(prompt) > max_context_length:
-            prompt = prompt[:max_context_length]
-            
-        model = "text-davinci-003"
+    # 텍스트를 2000 단어로 제한
+    text = text[:2000]
 
-        response = openai.Completion.create(
-            model = model,
-            prompt = prompt,
-            max_tokens = 1024,
-            temperature = 0.2,
-            top_p = 0.8,
-            frequency_penalty=0,
-            presence_penalty=0
-        )
-        summary = response.choices[0].text.strip()
-        summary_article.append(summary)
-        
-    return summary_article
+    request_body = {
+        "document": {
+            "content": text
+        },
+        "option": {
+            "language": 'ko',
+            "model": "news",
+            "summaryCount": 2,
+            "tone": 0
+        }
+    }
+    headers = {
+        'Accept': 'application/json;UTF-8',
+        'Content-Type': 'application/json;UTF-8',
+        'X-NCP-APIGW-API-KEY-ID': client_id,
+        'X-NCP-APIGW-API-KEY': client_secret
+    }
 
-# df = df
-# num_article = 3
-# summary = news_summarize(df, num_article)
-# print(summary)
+    response = requests.post(url, headers=headers, data=json.dumps(request_body).encode('UTF-8'))
+    rescode = response.status_code
+
+    if rescode == 200:
+        summary = response.text
+    else:
+        print("Error : " + response.text)
+        summary = ""
+    article = re.sub(r'\\|\'|\n|n|\"', '', summary).split(':')[1].rstrip('}')
+    return article
