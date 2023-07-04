@@ -37,8 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'common',
-    'main',
+    'common.apps.CommonConfig',
+    'main.apps.MainConfig',
 ]
 
 MIDDLEWARE = [
@@ -84,10 +84,10 @@ WSGI_APPLICATION = 'pagepalette.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'example', #'pagepalette',
-        'USER': 'root', #'pagepalette',
-        'PASSWORD': '1234', #'pagepalette0528',
-        'HOST': 'localhost', # 112.~
+        'NAME': 'pagepalette', #'pagepalette',
+        'USER': 'pagepalette', #'pagepalette',
+        'PASSWORD': 'pagepalette0528', #'pagepalette0528',
+        'HOST': '192.168.0.176', # 112.~
         'PORT': '3306',
     }
 }
@@ -115,9 +115,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'ASIA/Seoul'
 
 USE_I18N = True
 
@@ -161,3 +161,4 @@ CORS_ALLOW_HEADERS = (
     'x-requested-with',
 )
 
+LOGIN_REDIRECT_URL = '/'

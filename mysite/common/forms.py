@@ -1,12 +1,12 @@
 from django import forms
-from .models import User, UserOption
+from .models import UserInfo, UserOption
 
 class SignupForm(forms.ModelForm):
-    gender = forms.ChoiceField(choices=User.GENDER_CHOICES, widget=forms.RadioSelect)
-    age = forms.ChoiceField(choices=User.AGE_CHOICES, widget=forms.RadioSelect)
+    gender = forms.ChoiceField(choices=UserInfo.GENDER_CHOICES, widget=forms.RadioSelect)
+    age = forms.ChoiceField(choices=UserInfo.AGE_CHOICES, widget=forms.RadioSelect)
 
     class Meta:
-        model = User
+        model = UserInfo
         db_table = 'user'
         fields = ['email', 'pw', 'gender', 'age']
 

@@ -4,12 +4,15 @@ from django.http import JsonResponse, HttpResponse
 # from django.views import View
 # from django.core.exceptions import ValidationError
 # from django.db.models import Q
-from .models import User
+from .models import UserInfo
 from .forms import SignupForm, SubscribeForm
 
 # Create your views here.
 def LogIn(request):
-    return HttpResponse('login page')
+    return render(request, 'common/login.html')
+
+def LogOut(request):
+    return render(request, 'common/login.html')
 
 def check_pw_len(pw, MIN_PW_LENGTH = 8):
     if len(pw) < MIN_PW_LENGTH:
@@ -26,7 +29,7 @@ def SignUp(request):
             check_pw_len(pw)
 
             # 이미 가입된 이메일인지 확인
-            if User.objects.filter(email=email).exists():
+            if UserInfo.objects.filter(email=email).exists():
                 error_message = '이미 가입된 email 입니다'
                 return render(request, 'common/signup.html', {'form':form, 'error_message':error_message})
             else:
@@ -41,7 +44,7 @@ def Subscribe(request):
         form = SubscribeForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            if User.objects.filter(email=email).exists():
+            if UserInfo.objects.filter(email=email).exists():
                 form.save()
                 return redirect('main:main')
             else:

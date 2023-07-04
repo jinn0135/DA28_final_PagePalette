@@ -15,8 +15,10 @@ Including another URLconf
 """
 
 from django.urls import include, path
+from main import views
 
 urlpatterns = [
     path('main/', include('main.urls')),
     path('common/', include('common.urls')),
+    path('', views.main, name='main'),
 ]
