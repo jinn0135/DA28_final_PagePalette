@@ -36,5 +36,8 @@ def summarize_text(text):
     else:
         print("Error : " + response.text)
         summary = ""
+    try:
+        print(article)
+    except: pass
     article = re.sub(r'\\|\'|\n|n|\"', '', summary).split(':')[1].rstrip('}')
     return article
