@@ -8,7 +8,7 @@
 
         <nav>
             <ul>
-                {% if user.is_authenticated %}
+                {% if request.session.user_id %}
                 <!-- 사용자가 인증된 경우 -->
                 <li>
                     <a href="{% url 'common:subscribe' %}"><button>구독하기</button></a>

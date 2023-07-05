@@ -16,18 +16,21 @@ def LogIn(request):
         email = request.POST.get('email')
         pw = request.POST.get('pw')
         try:
-                # UserInfo 모델에서 해당 이메일과 비밀번호 확인
-                user = UserInfo.objects.get(email=email, pw=pw)
-                # 로그인 처리
-                request.session['email'] = user.email
+            # UserInfo 모델에서 해당 이메일과 비밀번호 확인
+            user = UserInfo.objects.get(email=email)
+            if user.pw == pw:
+                # 로그인 성공
+                request.session['user_id'] = user.email
                 return redirect('main:main')
-        except UserInfo.DoesNotExist:
-                error_message = '이메일 또는 비밀번호가 일치하지 않습니다.'
+            else:
+                # 비밀번호가 일치하지 않다면
+                error_message = '이메일과 비밀번호를 확인해주세요'
                 return render(request, 'common/login.html', {'error_message': error_message})
+        except UserInfo.DoesNotExist:
+            error_message = '이메일과 비밀번호를 확인해주세요'
+            return render(request, 'common/login.html', {'error_message': error_message})
     else:
-        form = SignupForm()
-
-    return render(request, 'common/login.html', {'form':form})
+        return render(request, 'common/login.html')
 
 def LogOut(request):
     # 로그아웃 처리
