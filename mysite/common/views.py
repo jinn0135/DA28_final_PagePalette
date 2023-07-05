@@ -34,8 +34,8 @@ def LogIn(request):
 
 def LogOut(request):
     # 로그아웃 처리
-    if 'email' in request.session:
-        del request.session['email']
+    if 'user_id' in request.session:
+        del request.session['user_id']
     return redirect('main:main')
 
 # 가입 페이지

@@ -2,12 +2,12 @@
 {% block content %}
 
 <main id="main">
-    <div class="main-container-signup">
+    <div class="signup-container">
         <h4>회원가입</h4>
         <form method="post">
             {% csrf_token %}
-            <ul>
-                <li class="typing-list">
+            <ul class="typing-list" style="height:300px">
+                <li>
                     <label for="email">
                         이메일 입력
                         <input type="text" name="email" id="email" placeholder="example@pagepalette.com" class="input-form">
@@ -18,7 +18,7 @@
                         <p class="error-message">이미 존재하는 이메일입니다.</p>
                     </li>
                 {% endfor %}
-                <li class="typing-list">
+                <li>
                     <label for="pw">
                         비밀번호 입력
                         <input type="password" name="pw" id="pw" placeholder="8자리 이상 비밀번호 입력" class="input-form">
@@ -31,23 +31,23 @@
                 </li>
                 <!--230705 1118 시작-->
                 <div class="dropdown-list">
-                    <label for="gender">성별</label><br>
+                    <label for="gender" style="padding:0 5px 0 5px;">성별</label><br>
                     <select name="gender" id="gender" class="input-form" style="width: 100px;">
-                        <option value="" selected>성별</option>
+                        <option value="" selected>선택</option>
                         {% for choice in form.gender %}
                             {{ choice }}
                         {% endfor %}
                     </select>
-                    <label for="age">연령대</label><br>
+                    <label for="age" style="padding:0 5px 0 5px;">연령대</label><br>
                     <select name="age" id="age" class="input-form" style="width: 100px;">
-                        <option value="" selected>연령대</option>
+                        <option value="" selected>선택</option>
                         {% for choice in form.age %}
                             {{ choice }}
                         {% endfor %}
                     </select>
                 </div>
 
-                <li class="vstack gap-2 col-md-5 mx-auto">
+                <li>
                     <button type="submit" value="가입하기" class="submit-button">가입하기</button>
                 </li>
                 <!-- 230705 1127 마침 -->
