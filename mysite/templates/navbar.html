@@ -9,18 +9,20 @@
         <nav>
             <ul>
                 {% if user.is_authenticated %}
+                <!-- 사용자가 인증된 경우 -->
                 <li>
-                    <a href="{% url 'common:subscribe' %}" class="Nanum"><button>구독하기</button></a>
+                    <a href="{% url 'common:subscribe' %}"><button>구독하기</button></a>
                 </li>
                 <li>
-                    <a href="{% url 'common:logout' %}" class="Nanum"><button>로그아웃</button></a>
+                    <a href="{% url 'common:logout' %}"><button>로그아웃</button></a>
                 </li>
                 {% else %}
+                <!-- 사용자가 인증되지 않은 경우 -->
                 <li>
-                    <a href="{% url 'common:subscribe' %}" class="Nanum"><button>구독하기</button></a>
+                    <a href="{% url 'common:login' %}"><button>구독하기</button></a>
                 </li>
                 <li>
-                    <a href="{% url 'common:login' %}" class="Nanum"><button>로그인</button></a>/<a href="{% url 'common:signup' %}"><button>회원가입</button></a>
+                    <a href="{% url 'common:login' %}"><button>로그인</button></a>/<a href="{% url 'common:signup' %}"><button>회원가입</button></a>
                 </li>
                 {% endif %}
             </ul>

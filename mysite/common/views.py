@@ -12,31 +12,28 @@ from .forms import SignupForm, SubscribeForm
 # Create your views here.
 
 def LogIn(request):
-    if request.method == 'GET':
-        return render(request, 'common/login.html')
-
-    elif request.method == 'POST':
-        username = request.POST.get('username', None)
-        password = request.POST.get('password', None)
-        errMsg = {}
-
-        if not (username and password):
-            errMsg['error'] = "모든 값을 입력하세요"
-        else:
-            user = UserInfo.objects.get(email = username)
-            if check_password(password, user.password):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        pw = request.POST.get('pw')
+        try:
+                # UserInfo 모델에서 해당 이메일과 비밀번호 확인
+                user = UserInfo.objects.get(email=email, pw=pw)
+                # 로그인 처리
                 request.session['email'] = user.email
-                return redirect('/')
-            else:
-                errMsg['error'] = "비밀번호를 다시 입력하세요"
-        return render(request, 'common/login.html', errMsg)
+                return redirect('main:main')
+        except UserInfo.DoesNotExist:
+                error_message = '이메일 또는 비밀번호가 일치하지 않습니다.'
+                return render(request, 'common/login.html', {'error_message': error_message})
+    else:
+        form = SignupForm()
+
+    return render(request, 'common/login.html', {'form':form})
 
 def LogOut(request):
-    return render(request, 'main/main.html')
-
-# def check_pw_len(pw, MIN_PW_LENGTH = 8):
-#     if len(pw) < MIN_PW_LENGTH:
-#         return JsonResponse({'message':'비밀번호는 8글자 이상이어야 합니다.'}, status=409)
+    # 로그아웃 처리
+    if 'email' in request.session:
+        del request.session['email']
+    return redirect('main:main')
 
 # 가입 페이지
 def SignUp(request):
@@ -45,11 +42,18 @@ def SignUp(request):
         if form.is_valid():
             email = form.cleaned_data['email']
             if UserInfo.objects.filter(email=email).exists():
-                error_message = '이미 가입된 이메일입니다.'
-                return render(request, 'common/signup.html', {'form': form, 'error_message': error_message})
+                messages.error(request, '이미 가입된 이메일입니다.')
+                return render(request, 'common/signup.html', {'form':form})
             else:
+                # 추가 유효성 검사
+                age = form.cleaned_data['age']
+                gender = form.cleaned_data['gender']
+                if not age or gender is None:
+                    messages.error(request, '성별과 연령대를 선택해주세요.')
+                    return render(request, 'common/signup.html', {'form':form})
                 form.save()
-                return redirect('/common/login')
+                return redirect('common:login')
+
     else:
         form = SignupForm()
 
@@ -70,8 +74,3 @@ def Subscribe(request):
     else:
         form = SubscribeForm()
     return render(request, 'common/subscribe.html', {'form':form})
-
-def BookService_detail(request):
-    pass
-    # 조건문 줘서 bookservice=1인 경우
-    # large_category, middle_category, selected_book_isbn 입력 창 나오게...

@@ -2,8 +2,8 @@ from django import forms
 from .models import UserInfo, UserOption
 
 class SignupForm(forms.ModelForm):
-    gender = forms.ChoiceField(choices=UserInfo.GENDER_CHOICES, widget=forms.Select())
-    age = forms.ChoiceField(choices=UserInfo.AGE_CHOICES, widget=forms.Select())
+    gender = forms.ChoiceField(choices=UserInfo.GENDER_CHOICES, widget=forms.Select(), required=True)
+    age = forms.ChoiceField(choices=UserInfo.AGE_CHOICES, widget=forms.Select(), required=True)
     pw = forms.CharField(widget=forms.PasswordInput())
     class Meta:
         model = UserInfo

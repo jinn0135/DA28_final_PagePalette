@@ -16,7 +16,7 @@ class UserInfo(models.Model):
     )
     email = models.CharField(primary_key=True, max_length=100)
     pw = models.CharField(max_length=30)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     age = models.IntegerField(choices=AGE_CHOICES)
 
     class Meta:
@@ -51,9 +51,9 @@ class UserOption(models.Model):
         (0, '도서 서비스 받지 않기'),
         (1, '도서 서비스 구독 하기'),
     )
-    reception_time = models.CharField(max_length=1, choices=TIME_CHOICES)
-    weekend = models.CharField(max_length=1, choices=WEEKEND_CHOICES)
-    book_service = models.CharField(max_length=1, choices=BOOKSERVICE_CHOICES)
+    reception_time = models.IntegerField(choices=TIME_CHOICES)
+    weekend = models.IntegerField(choices=WEEKEND_CHOICES)
+    book_service = models.IntegerField(choices=BOOKSERVICE_CHOICES)
 
     class Meta:
         managed = False
