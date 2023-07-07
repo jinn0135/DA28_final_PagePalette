@@ -24,14 +24,12 @@ class SignupForm(forms.ModelForm):
 
 class SubscribeForm(forms.ModelForm):
     reception_time = forms.ChoiceField(choices=UserOption.TIME_CHOICES,
-                                       widget=forms.RadioSelect)
+                                       widget=forms.RadioSelect, required=True)
     weekend = forms.ChoiceField(choices=UserOption.WEEKEND_CHOICES,
-                                widget=forms.RadioSelect)
+                                widget=forms.RadioSelect, required=True)
     book_service = forms.ChoiceField(choices=UserOption.BOOKSERVICE_CHOICES,
-                                     widget=forms.RadioSelect)
+                                     widget=forms.RadioSelect, required=True)
     class Meta:
         model = UserOption
         db_table = 'user_option'
-        fields = ['email','reception_time','weekend','book_service'
-                  # 'large_category','middle_category','selected_book_isbn'
-                  ]
+        fields = ['email','reception_time','weekend','book_service']

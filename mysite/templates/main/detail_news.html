@@ -1,12 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'detail.html' %}
 {% block content %}
-<div class="detail_container">
-    <a href="{% url 'main:detail_news' %}" class="detail_news_url">
-        news
-    </a>
-    <a href="{% url 'main:detail_books' %}" class="detail_books_url">
-        books
-    </a>
-</div>
-<div class="sample message">news 설명 들어가는 곳</div>
+<main>
+      <div class="contents-container">
+          <div class="text-container">
+              <h2>PagePalette의 뉴스 클리핑 서비스로 <br> 당신은 더 이상 언론사가 정해주는 헤드라인에만 의존하지 않아도 됩니다!</h2>
+          </div>
+
+          <div class="bookmark-container">
+              <a href="{% url 'main:detail_books' %}" class="detail_books_url"><button>도서</button></a>
+          </div>
+
+          <div class="image-container">
+              <img src="../../static/images/books_detail.png" alt="">
+          </div>
+      </div>
+</main>
 {% endblock %}

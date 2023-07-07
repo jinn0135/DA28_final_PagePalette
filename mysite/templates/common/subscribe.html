@@ -5,45 +5,42 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up</title>
+    <title>Subscribe</title>
 </head>
 <body>
     <div class="container">
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <h1>구독</h1>
+                <h1>구독하기</h1>
             </div>
         </div>
         <div class="row mt-5">
             <div class="col-12">
-                <form method="post">
+                <form method="POST" action="{% url 'common:subscribe' %}">
                     {% csrf_token %}
-                    <div class="form-group">
-                        <label for="id_email">Email 입력</label>
-                        {{ form.email }}
+                    <div>
+                        <label for="email">이메일</label>
+                        <input type="email" id="email" name="email" value="{{ request.session.user_id }}" readonly>
                     </div>
-                    {% if error_message %}
-                        <p class="error-message">{{ error_message }}</p>
-                    {% endif %}
                     <div class="form-group">
-                        <label for="id_reception_time">메일수신시간</label><br>
-                        {% for choice in form.reception_time %}
-                            {{ choice }}
+                        <label for="reception_time">메일 수신 시간</label><br>
+                        {% for value, label in form.reception_time.field.choices %}
+                            <input type="radio" id="time_{{ value }}" name="reception_time" value="{{ value }}" required>
+                            <label for="time_{{ value }}">{{ label }}</label>
                         {% endfor %}
                     </div>
                     <div class="form-group">
-                        <label for="id_weekend">주말수신선택</label><br>
-                        {% for choice in form.weekend %}
-                            {{ choice }}
+                        <label for="weekend">주말 수신 선택</label><br>
+                        {% for value, label in form.weekend.field.choices %}
+                            <input type="radio" id="weekend_{{ value }}" name="weekend" value="{{ value }}" required>
+                            <label for="weekend_{{ value }}">{{ label }}</label>
                         {% endfor %}
                     </div>
                     <div class="form-group">
-                        <label for="id_book_service">도서서비스 선택</label><br>
-                        {% for choice in form.book_service %}
-                            {{ choice }}
-                        {% endfor %}
+                        <label for="book_service">구독 서비스 선택</label><br>
+                        <button type="submit" name="book_service" value='0' class="btn btn-primary">뉴스만 구독하기</button>
+                        <button type="submit" name="book_service" value='1' class="btn btn-primary">책도 같이 구독하기</button>
                     </div>
-                    <button type="submit">구독하기</button>
                 </form>
             </div>
         </div>

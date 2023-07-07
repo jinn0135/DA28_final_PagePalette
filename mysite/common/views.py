@@ -1,12 +1,12 @@
 from django.shortcuts import render, redirect
 # import json, re, traceback
 from django.http import JsonResponse, HttpResponse
-from django.contrib.auth.hashers import make_password, check_password
 from django.contrib import messages
+import pandas as pd
 # from django.views import View
 # from django.core.exceptions import ValidationError
 # from django.db.models import Q
-from .models import UserInfo
+from .models import UserInfo, UserOption
 from .forms import SignupForm, SubscribeForm
 
 # Create your views here.
@@ -27,7 +27,7 @@ def LogIn(request):
                 error_message = '이메일과 비밀번호를 확인해주세요'
                 return render(request, 'common/login.html', {'error_message': error_message})
         except UserInfo.DoesNotExist:
-            error_message = '이메일과 비밀번호를 확인해주세요'
+            error_message = '존재하지 않는 이메일입니다'
             return render(request, 'common/login.html', {'error_message': error_message})
     else:
         return render(request, 'common/login.html')
@@ -66,14 +66,18 @@ def Subscribe(request):
     if request.method == "POST":
         form = SubscribeForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']
-            if UserInfo.objects.filter(email=email).exists():
-                form.save()
+            email = request.session.get('user_id')
+            form.instance.email = UserInfo.objects.get(email=email)
+            form.save()
+            book_service = form.cleaned_data['book_service']
+            if book_service == '0':
+                # 뉴스만 구독하기 선택 시
+                return redirect('main:main')
+            elif book_service == '1':
+                # 책도 같이 구독하기 선택 시
                 return redirect('main:main')
             else:
-                error_message = '등록된 본인 이메일이 아닙니다.'
-                return render(request, 'common/subscribe.html',
-                              {'form':form, 'error_message':error_message})
+                return render(request, 'common/subscribe.html')
     else:
         form = SubscribeForm()
     return render(request, 'common/subscribe.html', {'form':form})

@@ -27,7 +27,7 @@ class UserInfo(models.Model):
         return self.email
 
 class BookOption(models.Model):
-    email = models.OneToOneField('UserInfo', models.DO_NOTHING, db_column='email', primary_key=True)
+    email = models.OneToOneField(UserInfo, models.DO_NOTHING, db_column='email', primary_key=True)
     book_service = models.IntegerField()
     large_category = models.CharField(max_length=200, blank=True, null=True)
     middle_category = models.CharField(max_length=300, blank=True, null=True)
@@ -38,13 +38,13 @@ class BookOption(models.Model):
         db_table = 'book_option'
 
 class UserOption(models.Model):
-    email = models.OneToOneField('UserInfo', models.DO_NOTHING, db_column='email', primary_key=True)
+    email = models.OneToOneField(UserInfo, models.DO_NOTHING, db_column='email', primary_key=True)
     TIME_CHOICES = (
         (0, '오전 7시'),
         (1, '오후 5시'),
     )
     WEEKEND_CHOICES = (
-        (0, '주말메일 받지 않기'),
+        (0, '주말 메일 받지 않기'),
         (1, '주말에도 메일 받기'),
     )
     BOOKSERVICE_CHOICES = (

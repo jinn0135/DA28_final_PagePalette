@@ -14,7 +14,7 @@ li{
 }
 
 .container{
-    width: 1920px;
+    width: 100%;
     margin: 0 auto; /* 위쪽과 아래 : 0, 좌 우  : 자동  */
 }
 
@@ -27,7 +27,8 @@ header{
     z-index: 1; /* 스크롤 시 가려짐 방지 */
     width: 100%;
     padding: 0.5rem; /*나중에 공간 너무 떠보이면 여기를 수정 */
-    background: linear-gradient(#A4D0A4, #FFF8D6);
+    background-color: #FFF8D6;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 header .container{
@@ -44,18 +45,24 @@ header .left{
 }
 
 header .left > img{ /* 메인페이지용 */
+    padding-left: 5%;
     width: 150px;
     height: 50px;
 }
 
 header .left > a > img{ /*메인 페이지 외 페이지들 용 */
+    padding-left: 5%;
     width: 150px;
     height: 50px;
 }
 
+header nav {
+    padding-right: 5%;
+}
+
 header nav ul{
     display: flex; /* 가로로 배치 */
-    padding-right: 50px;
+
 }
 
 header nav ul li{
@@ -67,22 +74,8 @@ header h1{
     font-weight: bold;
 }
 
-/*header nav ul li button{*/
-/*    background: transparent;*/
-/*    border: 0;*/
-/*    cursor: pointer; !* 마우스 올렸을 때 활성화 표시 *!*/
-/*    font-size: 1rem;*/
-/*    font-weight: bold;*/
-/*    color: black;*/
-/*}*/
-
-/*header nav ul li button:hover{*/
-/*    font-size: 1rem;*/
-/*    font-weight: bold;*/
-/*    text-decoration: underline;*/
-/*}*/
-
-header nav ul li button{
+/* header nav ul li button */
+header button{
     border: 0;
     background: transparent;
     font-size: 1rem;
@@ -91,9 +84,9 @@ header nav ul li button{
     position: relative;
 }
 
-header nav ul li button::before {
+header button::before {
     content: '';
-    background-color: #49a949;
+    background-color: #b3b49c;
     position: absolute;
     left: 0;
     bottom: 3px;
@@ -103,20 +96,19 @@ header nav ul li button::before {
     transition: all .3s ease-in-out;
 }
 
-header nav ul li button:hover::before {
-    bottom: 0;
-    height: 100%;
+header button:hover::before {
+    color: white;
+    bottom: 3px;
+    height: 80%;
+
 }
 
 /* 메인 부분 스타일 */
 
 main{
-    top: 70px;
     width: 100%;
     height: 100vh; /* 뷰포트 높이의 100% */
-    /*background: linear-gradient(#FFF8D6, white); !* #F7E1AE, #FF8D6); *!*/
-    background-color: #FFF8D6;
-    /*background: url("./images/letter_with_space.jpg");*/
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../../static/images/main_page_bright.jpg') center center;
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -283,11 +275,4 @@ main a>button:hover{
 
 form > li:nth-last-child(1){ /* form태그가 포함하는 li요소들 중 마지막 요소는 항상 submit버튼 -> 가운데로 위치 */
     text-align: center;
-}
-
-/* 색상 저장용 */
-.palette{
-    color:#D2B4DE;
-    color:#A2D9CE;
-    color: #edff25;
 }
