@@ -72,12 +72,66 @@ def Subscribe(request):
             book_service = form.cleaned_data['book_service']
             if book_service == '0':
                 # 뉴스만 구독하기 선택 시
-                return redirect('main:main')
+                msg = '뉴스 구독이 완료되었습니다.'
+                return render(request, 'common/subscribe_success.html', {'msg':msg})
             elif book_service == '1':
                 # 책도 같이 구독하기 선택 시
-                return redirect('main:main')
+                return render(request, 'common/subscribe_book.html')
             else:
                 return render(request, 'common/subscribe.html')
     else:
         form = SubscribeForm()
     return render(request, 'common/subscribe.html', {'form':form})
+
+from .select_books import sortBook
+def subscribe_book(request):
+    email = request.session.get('user_id')
+    book_service = True
+    # to DB
+    return render(request, 'common/subscribe_book.html', {'result':''})
+
+def subscribe_book2(request):
+    genrid_dic = {'01': [i for i in range(1, 9)], '03': [i for i in range(1, 5)],
+                  '05': [i for i in range(1, 5)], '13': [i for i in range(1, 5)],
+                  '15': [i for i in range(1, 5)], '17': [i for i in range(1, 5)],
+                  '19': [i for i in range(1, 5)], '23': [i for i in range(1, 5)],
+                  '29': [i for i in range(1, 4)], '00': [i for i in range(1, 6)],
+                  }
+    id2g = {'01':'소설', '03':'시에세이', '05':'인문', '13':'경제경영',
+            '15':'자기계발', '17':'정치사회', '19':'역사문화',
+            '23':'예술대중문화', '29':'과학', '00':'기타'}
+
+    g1s, g2s = [], []
+    for g1_id, g2ids in genrid_dic.items():
+        for g2_id in g2ids:
+            input_genre = request.POST.get('{}_{}'.format(g1_id,g2_id),'')
+            if input_genre=='': continue
+            else:
+                g1s.append(id2g[g1_id])
+                g2s.append(input_genre)
+
+    large_category = ','.join(g1s)
+    middle_category = ','.join(g2s)
+    dic = {'large_category': large_category, 'middle_category': middle_category}
+    user_info = pd.DataFrame(dic, index=[0])
+    select = sortBook(user_info)
+    result_df = select()
+    books = []
+    for row in result_df.itertuples():
+        books.append({'img_url': row.img,'title': row.title,
+                      'author': row.author,'isbn': row.isbn,
+                      'order': row.order})
+    return render(request, 'common/subscribe_book.html', {'result':books})
+
+def subscribe_success(request):
+    titles = []
+    for i in range(1, 13):
+        title = request.POST.get('count{}'.format(i), '')
+        if title is not '':
+            titles.append(str(int(title.split('.')[0])))
+    selected_book_isbn = ','.join(titles)
+
+    msg = '뉴스와 도서 구독이 완료되었습니다.'
+    return render(request, 'common/subscribe_success.html', {'msg':msg})
+
+
