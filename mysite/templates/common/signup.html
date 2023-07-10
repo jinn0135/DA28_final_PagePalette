@@ -9,7 +9,7 @@
             <ul class="typing-list" style="height:300px">
                 <li>
                     <label for="email">
-                        이메일 입력
+                        이메일:
                         <input type="text" name="email" id="email" placeholder="example@pagepalette.com" class="input-form">
                     </label>
                 </li>
@@ -20,7 +20,7 @@
                 {% endfor %}
                 <li>
                     <label for="pw">
-                        비밀번호 입력
+                        비밀번호:
                         <input type="password" name="pw" id="pw" placeholder="8자리 이상 비밀번호 입력" class="input-form">
                     </label>
                     {% if form.pw.errors %}
@@ -31,14 +31,14 @@
                 </li>
                 <!--230705 1118 시작-->
                 <div class="dropdown-list">
-                    <label for="gender" style="padding:0 5px 0 5px;">성별</label><br>
+                    <label for="gender" style="padding:0 5px 0 5px;">성별: </label><br>
                     <select name="gender" id="gender" class="input-form" style="width: 100px;">
                         <option value="" selected>선택</option>
                         {% for choice in form.gender %}
                             {{ choice }}
                         {% endfor %}
                     </select>
-                    <label for="age" style="padding:0 5px 0 5px;">연령대</label><br>
+                    <label for="age" style="padding:0 5px 0 5px;">연령대: </label><br>
                     <select name="age" id="age" class="input-form" style="width: 100px;">
                         <option value="" selected>선택</option>
                         {% for choice in form.age %}

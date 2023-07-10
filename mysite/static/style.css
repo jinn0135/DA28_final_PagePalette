@@ -86,7 +86,7 @@ header button{
 
 header button::before {
     content: '';
-    background-color: #b3b49c;
+    background-color: #A4D0A4 ;
     position: absolute;
     left: 0;
     bottom: 3px;
@@ -109,7 +109,7 @@ main{
     width: 100%;
     height: 100vh; /* 뷰포트 높이의 100% */
     /* background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../../static/images/main_page_bright.jpg') center center;*/
-    background:url('../../static/images/main_page_bright.jpg');
+    background:url('./images/main_page_bright.jpg');
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -170,9 +170,9 @@ main a>button{ /* 메인 페이지 뉴스 서비스, 도서 서비스 바로가�
     width: 270px;
     height: 100px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 1.5rem;
     background-color: transparent;
-    border: 3px solid #617A55;
+    border: 3px solid #A4D0A4;
     border-radius: 20px;
     padding: 1rem 2rem;
     margin-top: 3rem;
