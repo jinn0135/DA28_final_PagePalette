@@ -62,7 +62,6 @@ header nav {
 
 header nav ul{
     display: flex; /* 가로로 배치 */
-
 }
 
 header nav ul li{
@@ -100,7 +99,6 @@ header button:hover::before {
     color: white;
     bottom: 3px;
     height: 80%;
-
 }
 
 /* 메인 부분 스타일 */
@@ -117,8 +115,6 @@ main{
     align-items: center; /* 직계 자손들의 align-self값을 그룹으로 지정. flex에서는 교차축으로, grid에서는 block axis로. */
     text-align: center;
 }
-
-
 
 .bookmark-div{
     border: 0;
@@ -145,8 +141,6 @@ main{
     bottom: 0;
     height: 100%;
 }
-
-
 
 main > h4{
     font-size: 2rem;
@@ -261,7 +255,6 @@ main a>button:hover{
     background-color: #A4D0A4;
     border: 1px solid #FFF8D6;
     font-weight: bold;
-
     box-shadow: inset 0 0 0 0 #A4D0A4; /* 시작 색상 */
     color: black; /* 시작 텍스트 색상 */
     margin: 0 -.25rem;
@@ -306,7 +299,6 @@ form > li:nth-last-child(1){ /* form태그가 포함하는 li요소들 중 마�
     text-align: center;
 }
 
-
 .typing-list input[type="radio"] {
     display: none;
 }
@@ -334,7 +326,6 @@ form > li:nth-last-child(1){ /* form태그가 포함하는 li요소들 중 마�
     background-color: #A4D0A4;
     border: 1px solid #FFF8D6;
     font-weight: bold;
-
     box-shadow: inset 0 0 0 0 #A4D0A4; /* 시작 색상 */
     color: black; /* 시작 텍스트 색상 */
     margin: 0 -.25rem;

@@ -73,12 +73,15 @@ def Subscribe(request):
             if book_service == '0':
                 # 뉴스만 구독하기 선택 시
                 msg = '뉴스 구독이 완료되었습니다.'
+                print(form.errors)
                 return render(request, 'common/subscribe_success.html', {'msg':msg})
             elif book_service == '1':
                 # 책도 같이 구독하기 선택 시
                 return render(request, 'common/subscribe_book.html')
             else:
                 return render(request, 'common/subscribe.html')
+        else:
+            print(form.errors)
     else:
         form = SubscribeForm()
     return render(request, 'common/subscribe.html', {'form':form})
@@ -86,7 +89,7 @@ def Subscribe(request):
 from .select_books import sortBook
 def subscribe_book(request):
     email = request.session.get('user_id')
-    book_service = True
+    book_service = '1'
     # to DB
     return render(request, 'common/subscribe_book.html', {'result':''})
 
@@ -105,7 +108,7 @@ def subscribe_book2(request):
     for g1_id, g2ids in genrid_dic.items():
         for g2_id in g2ids:
             input_genre = request.POST.get('{}_{}'.format(g1_id,g2_id),'')
-            if input_genre=='': continue
+            if input_genre == '': continue
             else:
                 g1s.append(id2g[g1_id])
                 g2s.append(input_genre)
@@ -127,7 +130,7 @@ def subscribe_success(request):
     titles = []
     for i in range(1, 13):
         title = request.POST.get('count{}'.format(i), '')
-        if title is not '':
+        if title != '':
             titles.append(str(int(title.split('.')[0])))
     selected_book_isbn = ','.join(titles)
 
