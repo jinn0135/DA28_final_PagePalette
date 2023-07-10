@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    {% load static %}
+    <style type="text/css">
+   select, ul { height: 100px; overflow: auto; width: 200px; border: 1px solid #000; }
+   ul { list-style-type: none; margin: 0; padding: 0; overflow-x: hidden; }
+   li { margin: 0; padding: 0; }
+   label { display: block; color: WindowText; background-color: Window; margin: 0; padding: 0; width: 100%; }
+   label:hover { background-color: Highlight; color: HighlightText; }
+  </style>
+    <link rel="stylesheet" href="static/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>subscribe_book</title>
+<!--</head>-->
+<script>
+function multiSelect(value){
+ if(value=="OPEN") Div.style.visibility="visible";
+ else Div.style.visibility="hidden";
+}
+</script>
+</head>
+
+<body>
+    <h1>도서구독</h1>
+<!--    <div class="container">-->
+<!--        <div class="my_select">-->
+<!--            <form action="http://127.0.0.1:8000/common/subscribe_book/book2/" method="post">-->
+<!--                {% csrf_token %}-->
+<!--                <label for="genres">Choose Genres:</label>-->
+<!--                <select name="genres" id="genres" multiple>-->
+<!--                    <optgroup label="소설">-->
+<!--                        <option value="한국소설">한국소설</option>-->
+<!--                        <option value="고전소설">고전소설</option>-->
+<!--                        <option value="영미소설">영미소설</option>-->
+<!--                        <option value="일본소설">일본소설</option>-->
+<!--                        <option value="미스터리/스릴러">미스터리/스릴러</option>-->
+<!--                        <option value="판타지소설">판타지소설</option>-->
+<!--                        <option value="드라마/영화 소설">드라마/영화 소설</option>-->
+<!--                        <option value="sf/과학">sf/과학</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="시에세이">-->
+<!--                        <option value="현대시">현대시</option>-->
+<!--                        <option value="한국에세이">한국에세이</option>-->
+<!--                        <option value="영미에세이">영미에세이</option>-->
+<!--                        <option value="테마에세이">테마에세이</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="인문">-->
+<!--                        <option value="심리학">심리학</option>-->
+<!--                        <option value="철학">철학</option>-->
+<!--                        <option value="인문교양">인문교양</option>-->
+<!--                        <option value="글쓰기">글쓰기</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="경제경영">-->
+<!--                        <option value="재테크/금융">재테크/금융</option>-->
+<!--                        <option value="부동산">부동산</option>-->
+<!--                        <option value="마케팅/광고">마케팅/광고</option>-->
+<!--                        <option value="경영전략">경영전략</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="자기계발">-->
+<!--                        <option value="성공/처세">성공/처세</option>-->
+<!--                        <option value="자기능력계발">자기능력계발</option>-->
+<!--                        <option value="화술">화술</option>-->
+<!--                        <option value="마인드콘트롤/감정">마인드콘트롤/감정</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="역사문화">-->
+<!--                        <option value="한국사">한국사</option>-->
+<!--                        <option value="세계사">세계사</option>-->
+<!--                        <option value="동양사">동양사</option>-->
+<!--                        <option value="역사기행">역사기행</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="정치사회">-->
+<!--                        <option value="정치">정치</option>-->
+<!--                        <option value="사회학">사회학</option>-->
+<!--                        <option value="사회문제">사회문제</option>-->
+<!--                        <option value="외교">외교</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="예술대중문화">-->
+<!--                        <option value="음악">음악</option>-->
+<!--                        <option value="미술">미술</option>-->
+<!--                        <option value="건반악기">건반악기</option>-->
+<!--                        <option value="디자인/색채">디자인/색채</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="과학">-->
+<!--                        <option value="교양과학">교양과학</option>-->
+<!--                        <option value="수학">수학</option>-->
+<!--                        <option value="뇌과학">뇌과학</option>-->
+<!--                    </optgroup>-->
+<!--                    <optgroup label="기타">-->
+<!--                        <option value="요리">요리</option>-->
+<!--                        <option value="건강">건강</option>-->
+<!--                        <option value="여행">여행</option>-->
+<!--                        <option value="가정/육아">가정/육아</option>-->
+<!--                        <option value="청소년">청소년</option>-->
+<!--                    </optgroup>-->
+<!--                </select>-->
+<!--                <br>-->
+<!--                <input type="submit" value="확인" name="genre">-->
+<!--            </form>-->
+<!--            <script>-->
+<!--                var selectBox = document.getElementById("genres");-->
+<!--                var selectedCount = 0;-->
+<!--                selectBox.addEventListener("change", function() {-->
+<!--                if (this.options[this.selectedIndex].selected) {-->
+<!--                    selectedCount++;-->
+<!--                } else {-->
+<!--                    selectedCount&#45;&#45;;-->
+<!--                }-->
+<!--                if (selectedCount > 4) {-->
+<!--                    this.options[this.selectedIndex].selected = false;-->
+<!--                    selectedCount&#45;&#45;;-->
+<!--                    }-->
+<!--                });-->
+<!--            </script>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <form action="http://127.0.0.1:8000/common/subscribe_book/book2/" name="form1" method="post">
+        {% csrf_token %}
+        <table cellpadding="0" cellspacing="0" style="cursor:pointer" onClick="multiSelect('OPEN')">
+            <tr>
+                <td align="center" width="200" style="border:1px solid;font-size:12px;">선호 장르 선택</td>
+                <td><input type="button" value="▼" onclick=""></td>
+            </tr>
+        </table>
+        <div id="Div" style="position:absolute;visibility:hidden;font-size:12px;">
+
+            <ul><strong>소설</strong>
+                 <li><input type="checkbox" name="01_1" id="nov1">한국소설</li>
+                 <li><input type="checkbox" name="01_2" id="nov2">고전소설</li>
+                 <li><input type="checkbox" name="01_3" id="nov3">영미소설</li>
+                 <li><input type="checkbox" name="01_4" id="nov4">일본소설</li>
+                 <li><input type="checkbox" name="01_5" id="nov5">미스터리/스릴러</li>
+                 <li><input type="checkbox" name="01_6" id="nov6">판타지소설</li>
+                 <li><input type="checkbox" name="01_7" id="nov7">드라마/영화 소설</li>
+                 <li><input type="checkbox" name="01_8" id="nov8">sf/과학</li>
+
+                 <strong>시/에세이</strong>
+                 <li><input type="checkbox" name="03_1" id="poem1">현대시</li>
+                 <li><input type="checkbox" name="03_2" id="poem2">한국에세이</li>
+                 <li><input type="checkbox" name="03_3" id="poem3">영미에세이</li>
+                 <li><input type="checkbox" name="03_4" id="poem4">테마에세이</li>
+
+                 <strong>인문</strong>
+                 <li><input type="checkbox" name="05_1" id="hum1">심리학</li>
+                 <li><input type="checkbox" name="05_2" id="hum2">철학</li>
+                 <li><input type="checkbox" name="05_3" id="hum3">인문교양</li>
+                 <li><input type="checkbox" name="05_4" id="hum4">글쓰기</li>
+
+                 <strong>경제경영</strong>
+                 <li><input type="checkbox" name="13_1" id="eco1">재테크/금융</li>
+                 <li><input type="checkbox" name="13_2" id="eco2">부동산</li>
+                 <li><input type="checkbox" name="13_3" id="eco3">마케팅/광고</li>
+                 <li><input type="checkbox" name="13_4" id="eco4">경영전략</li>
+
+                 <strong>자기계발</strong>
+                 <li><input type="checkbox" name="15_1" id="self1">성공/처세</li>
+                 <li><input type="checkbox" name="15_2" id="self2">자기능력계발</li>
+                 <li><input type="checkbox" name="15_3" id="self3">화술</li>
+                 <li><input type="checkbox" name="15_4" id="self4">마인드콘트롤/감정</li>
+
+                 <strong>역사문화</strong>
+                 <li><input type="checkbox" name="19_1" id="his1">한국사</li>
+                 <li><input type="checkbox" name="19_2" id="his2">세계사</li>
+                 <li><input type="checkbox" name="19_3" id="his3">서양사</li>
+                 <li><input type="checkbox" name="19_4" id="his4">역사기행</li>
+
+                 <strong>정치사회</strong>
+                 <li><input type="checkbox" name="17_1" id="pol1">정치</li>
+                 <li><input type="checkbox" name="17_2" id="pol2">사회학</li>
+                 <li><input type="checkbox" name="17_3" id="pol3">사회문제</li>
+                 <li><input type="checkbox" name="17_4" id="pol4">외교</li>
+
+                 <strong>예술대중문화</strong>
+                 <li><input type="checkbox" name="23_1" id="art1">음악</li>
+                 <li><input type="checkbox" name="23_2" id="art2">미술</li>
+                 <li><input type="checkbox" name="23_3" id="art3">건반악기</li>
+                 <li><input type="checkbox" name="23_4" id="art4">디자인/색채</li>
+
+                 <strong>과학</strong>
+                 <li><input type="checkbox" name="29_1" id="sci1">교양과학</li>
+                 <li><input type="checkbox" name="29_2" id="sci2">수학</li>
+                 <li><input type="checkbox" name="29_3" id="sci3">뇌과학</li>
+
+                 <strong>기타</strong>
+                 <li><input type="checkbox" name="00_1" id="etc1">요리</li>
+                 <li><input type="checkbox" name="00_2" id="etc2">건강</li>
+                 <li><input type="checkbox" name="00_3" id="etc3">여행</li>
+                 <li><input type="checkbox" name="00_4" id="etc4">가정/육아</li>
+                 <li><input type="checkbox" name="00_5" id="etc5">청소년</li>
+            </ul>
+
+            <div style="padding-top:3px;text-align:right">
+                <input type="submit" value="확인" onClick="multiSelect('CLOSE')">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function multiSelect(value){
+            if(value == "OPEN"){
+                Div.style.visibility = "visible";
+            } else {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                var checkedCount = 0;
+                checkboxes.forEach(function(checkbox) {
+                    if(checkbox.checked){
+                        checkedCount++;
+                    }
+                });
+                if(checkedCount > 4){
+                    alert("최대 4개까지 선택할 수 있습니다.");
+                    return false;
+                }
+                Div.style.visibility = "hidden";
+            }
+        }
+    </script>
+
+    <div class="output_box">
+        <form action="http://127.0.0.1:8000/common/subscribe_book/book2/success/" name="select_box2" method="post">
+            {% csrf_token %}
+            <center>
+                {% for book in result %}
+                 <div>
+                     <h3>{{ book.order }}
+                         <input type="checkbox" value="{{ book.isbn }}" name="count{{forloop.counter}}">
+                         {{ book.title }}
+                     </h3>
+                     <img src="{{ book.img_url }}" alt="Book Image" width="20%">
+                     <p>작가: {{ book.author }}</p>
+                 </div>
+                {% endfor %}
+            </center>
+            {% if result %}
+                <input type="submit" value="구독하기" name="select_books">
+            {% endif %}
+        </form>
+    </div>
+
+</body>
+</html>
