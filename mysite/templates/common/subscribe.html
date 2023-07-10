@@ -1,49 +1,45 @@
-<!doctype html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, shrink-to-fit=no">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Subscribe</title>
-</head>
-<body>
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-12 text-center">
-                <h1>구독하기</h1>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-12">
-                <form method="POST" action="{% url 'common:subscribe' %}">
-                    {% csrf_token %}
-                    <div>
-                        <label for="email">이메일</label>
-                        <input type="email" id="email" name="email" value="{{ request.session.user_id }}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="reception_time">메일 수신 시간</label><br>
+{% extends 'base.html' %}
+{% block content %}
+
+<main id="main">
+    <div class="subscribe-container">
+        <h4>구독하기</h4>
+        <form method="POST" action="{% url 'common:subscribe' %}">
+            {% csrf_token %}
+            <ul class="typing-list" style="margin-top:30px">
+                <div>
+                    <label for="email"><strong>나의 이메일 :</strong></label>
+                    {{ request.session.user_id }}
+                </div>
+                <div>
+                    <label for="reception_time"><strong>메일 수신 시간</strong></label><br>
+                    <div style="margin-top:10px;">
                         {% for value, label in form.reception_time.field.choices %}
                             <input type="radio" id="time_{{ value }}" name="reception_time" value="{{ value }}" required>
                             <label for="time_{{ value }}">{{ label }}</label>
                         {% endfor %}
                     </div>
-                    <div class="form-group">
-                        <label for="weekend">주말 수신 선택</label><br>
+                </div>
+                <div>
+                    <label for="weekend"><strong>주말 수신 선택</strong></label><br>
+                    <div style="margin-top:10px;">
                         {% for value, label in form.weekend.field.choices %}
-                            <input type="radio" id="weekend_{{ value }}" name="weekend" value="{{ value }}" required>
-                            <label for="weekend_{{ value }}">{{ label }}</label>
+                        <input type="radio" id="weekend_{{ value }}" name="weekend" value="{{ value }}" required>
+                        <label for="weekend_{{ value }}">{{ label }}</label>
                         {% endfor %}
                     </div>
-                    <div class="form-group">
-                        <label for="book_service">구독 서비스 선택</label><br>
-                        <button type="submit" name="book_service" value='0' class="btn btn-primary">뉴스만 구독하기</button>
-                        <button type="submit" name="book_service" value='1' class="btn btn-primary">책도 같이 구독하기</button>
+                </div>
+                <div>
+                    <div style="margin-top:10px; font-size:20px">
+                        <label for="book_service"><strong>월 1900원에 메일로</strong></label><br>
                     </div>
-                </form>
-            </div>
-        </div>
+                    <div style="margin-top:10px;">
+                        <button style="margin-right:10px;" class="subscribe-submit-button" type="submit"  name="book_service" value='0' class="btn btn-primary">뉴스만<br>받아볼래요.</button>
+                        <button class="subscribe-submit-button" type="submit" name="book_service" value='1' class="btn btn-primary">책도 같이<br>받아볼래요.</button>
+                    </div>
+                </div>
+            </ul>
+        </form>
     </div>
-</body>
-</html>
+</main>
+{% endblock %}
