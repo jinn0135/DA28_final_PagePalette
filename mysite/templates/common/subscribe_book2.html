@@ -6,7 +6,6 @@
         <br>
         <h4>(단, 하나의 장르만 선택 시 두 권)</h4>
     </h1>
-
     <div class="output-box">
         <form action="http://127.0.0.1:8000/common/subscribe_book/book2/success/" name="select_box2" method="post">
             {% csrf_token %}
@@ -53,28 +52,5 @@
             {% endif %}
         </form>
     </div>
-
-
-    <script>
-        const Div = document.querySelector('#Div');
-        function multiSelect(value) {
-            if (value === "OPEN") {
-                Div.style.visibility = "visible";
-            } else {
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                var checkedCount = 0;
-                checkboxes.forEach(function (checkbox) {
-                    if (checkbox.checked) {
-                        checkedCount++;
-                    }
-                });
-                if (checkedCount > 4) {
-                    alert("최대 4개까지 선택할 수 있습니다.");
-                    return false;
-                }
-                Div.style.visibility = "hidden";
-            }
-        }
-    </script>
 </main>
 {% endblock %}
