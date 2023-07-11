@@ -1,45 +1,106 @@
-{% extends 'base.html' %}
+{% extends 'subscribe_base.html' %}
 {% block content %}
-​
-<main id="main">
-    <div class="subscribe-container">
-        <h4>구독하기</h4>
-        <form method="POST" action="{% url 'common:subscribe' %}">
-            {% csrf_token %}
-            <ul class="typing-list" style="margin-top:30px">
-                <div>
-                    <label for="email"><strong>나의 이메일 :</strong></label>
-                    <input style="border: none; outline: none; width: 200px; text-align:center;" type="email" id="email" name="email" value="{{ request.session.user_id }}" readonly>
-                </div>
-                <div>
-                    <label for="reception_time"><strong>메일 수신 시간</strong></label><br>
-                    <div style="margin-top:10px;">
-                        {% for value, label in form.reception_time.field.choices %}
-                            <input type="radio" id="time_{{ value }}" name="reception_time" value="{{ value }}" required>
-                            <label for="time_{{ value }}">{{ label }}</label>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div>
-                    <label for="weekend"><strong>주말 수신 선택</strong></label><br>
-                    <div style="margin-top:10px;">
-                        {% for value, label in form.weekend.field.choices %}
-                        <input type="radio" id="weekend_{{ value }}" name="weekend" value="{{ value }}" required>
-                        <label for="weekend_{{ value }}">{{ label }}</label>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div>
-                    <div style="margin-top:10px; font-size:20px">
-                        <label for="book_service"><strong>월 1900원에 메일로</strong></label><br>
-                    </div>
-                    <div style="margin-top:10px;">
-                        <button style="margin-right:10px;" class="subscribe-submit-button" type="submit"  name="book_service" value='0'>뉴스만<br>받아볼래요.</button>
-                        <button class="subscribe-submit-button" type="submit" name="book_service" value='1'>책도 같이<br>받아볼래요.</button>
-                    </div>
-                </div>
+
+<div class="dropdown-main">
+    <form action="http://127.0.0.1:8000/common/subscribe_book/book2/" name="form1" method="post">
+        {% csrf_token %}
+        <div class="dropdown-container" cellpadding="0" cellspacing="0" style="cursor:pointer; justify-content: space-evenly;" onClick="multiSelect('OPEN')">
+            <h1>도서구독</h1>
+            
+            <p>최대 <strong>4</strong>개의 장르까지 선택 가능합니다.</p>
+
+            <ul class="dropdown-ul">
+                <strong>소설</strong>
+                <li><input class="dropdown-li" type="checkbox" name="01_1" id="nov1" value="한국소설">한국소설</li>
+                <li><input class="dropdown-li" type="checkbox" name="01_2" id="nov2" value="고전소설">고전소설</li>
+                <li><input class="dropdown-li" type="checkbox" name="01_3" id="nov3" value="영미소설">영미소설</li>
+                <li><input class="dropdown-li" type="checkbox" name="01_4" id="nov4" value="일본소설">일본소설</li>
+                <li><input class="dropdown-li" type="checkbox" name="01_5" id="nov5" value="미스터리스릴러">미스터리/스릴러</li>
+                <li><input class="dropdown-li" type="checkbox" name="01_6" id="nov6" value="판타지소설">판타지소설</li>
+                <li><input class="dropdown-li" type="checkbox" name="01_7" id="nov7" value="드라마영화소설">드라마/영화 소설</li>
+                <li><input class="dropdown-li" type="checkbox" name="01_8" id="nov8" value="sf과학">sf/과학</li>
+
+                <strong>시/에세이</strong>
+                <li><input class="dropdown-li" type="checkbox" name="03_1" id="poem1" value="현대시">현대시</li>
+                <li><input class="dropdown-li" type="checkbox" name="03_2" id="poem2" value="한국에세이">한국에세이</li>
+                <li><input class="dropdown-li" type="checkbox" name="03_3" id="poem3" value="영미에세이">영미에세이</li>
+                <li><input class="dropdown-li" type="checkbox" name="03_4" id="poem4" value="테마에세이">테마에세이</li>
+
+                <strong>인문</strong>
+                <li><input class="dropdown-li" type="checkbox" name="05_1" id="hum1" value="심리학">심리학</li>
+                <li><input class="dropdown-li" type="checkbox" name="05_2" id="hum2" value="철학">철학</li>
+                <li><input class="dropdown-li" type="checkbox" name="05_3" id="hum3" value="인문교양">인문교양</li>
+                <li><input class="dropdown-li" type="checkbox" name="05_4" id="hum4" value="글쓰기">글쓰기</li>
+
+                <strong>경제경영</strong>
+                <li><input class="dropdown-li" type="checkbox" name="13_1" id="eco1" value="재테크금융">재테크/금융</li>
+                <li><input class="dropdown-li" type="checkbox" name="13_2" id="eco2" value="부동산">부동산</li>
+                <li><input class="dropdown-li" type="checkbox" name="13_3" id="eco3" value="마케팅광고">마케팅/광고</li>
+                <li><input class="dropdown-li" type="checkbox" name="13_4" id="eco4" value="경영전략">경영전략</li>
+
+                <strong>자기계발</strong>
+                <li><input class="dropdown-li" type="checkbox" name="15_1" id="self1" value="성공처세">성공/처세</li>
+                <li><input class="dropdown-li" type="checkbox" name="15_2" id="self2" value="자기능력계발">자기능력계발</li>
+                <li><input class="dropdown-li" type="checkbox" name="15_3" id="self3" value="화술">화술</li>
+                <li><input class="dropdown-li" type="checkbox" name="15_4" id="self4" value="마인드콘트롤감정">마인드콘트롤/감정</li>
+
+                <strong>역사문화</strong>
+                <li><input class="dropdown-li" type="checkbox" name="19_1" id="his1" value="한국사">한국사</li>
+                <li><input class="dropdown-li" type="checkbox" name="19_2" id="his2" value="세계사">세계사</li>
+                <li><input class="dropdown-li" type="checkbox" name="19_3" id="his3" value="서양사">서양사</li>
+                <li><input class="dropdown-li" type="checkbox" name="19_4" id="his4" value="역사기행">역사기행</li>
+
+                <strong>정치사회</strong>
+                <li><input class="dropdown-li" type="checkbox" name="17_1" id="pol1" value="정치">정치</li>
+                <li><input class="dropdown-li" type="checkbox" name="17_2" id="pol2" value="사회학">사회학</li>
+                <li><input class="dropdown-li" type="checkbox" name="17_3" id="pol3" value="사회문제">사회문제</li>
+                <li><input class="dropdown-li" type="checkbox" name="17_4" id="pol4" value="외교">외교</li>
+
+                <strong>예술대중문화</strong>
+                <li><input class="dropdown-li" type="checkbox" name="23_1" id="art1" value="음악">음악</li>
+                <li><input class="dropdown-li" type="checkbox" name="23_2" id="art2" value="미술">미술</li>
+                <li><input class="dropdown-li" type="checkbox" name="23_3" id="art3" value="건반악기">건반악기</li>
+                <li><input class="dropdown-li" type="checkbox" name="23_4" id="art4" value="디자인색채">디자인/색채</li>
+
+                <strong>과학</strong>
+                <li><input class="dropdown-li" type="checkbox" name="29_1" id="sci1" value="교양과학">교양과학</li>
+                <li><input class="dropdown-li" type="checkbox" name="29_2" id="sci2" value="수학">수학</li>
+                <li><input class="dropdown-li" type="checkbox" name="29_3" id="sci3" value="뇌과학">뇌과학</li>
+
+                <strong>기타</strong>
+                <li><input class="dropdown-li" type="checkbox" name="00_1" id="etc1" value="요리">요리</li>
+                <li><input class="dropdown-li" type="checkbox" name="00_2" id="etc2" value="건강">건강</li>
+                <li><input class="dropdown-li" type="checkbox" name="00_3" id="etc3" value="여행">여행</li>
+                <li><input class="dropdown-li" type="checkbox" name="00_4" id="etc4" value="가정육아">가정/육아</li>
+                <li><input class="dropdown-li" type="checkbox" name="00_5" id="etc5" value="청소년">청소년</li>
             </ul>
-        </form>
-    </div>
-</main>
+
+            <div style="text-align:center">
+                <input type="submit" value="확인" onClick="multiSelect('CLOSE')" class="submit-button">
+            </div>
+        </div>
+    </form>
+
+    <script>
+        const Div = document.querySelector('#Div');
+        function multiSelect(value) {
+            if (value === "OPEN") {
+                Div.style.visibility = "visible";
+            } else {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                var checkedCount = 0;
+                checkboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        checkedCount++;
+                    }
+                });
+                if (checkedCount > 4) {
+                    alert("최대 4개까지 선택할 수 있습니다.");
+                    return false;
+                }
+                Div.style.visibility = "hidden";
+            }
+        }
+    </script>
+</div>
 {% endblock %}
