@@ -106,112 +106,88 @@ header button:hover::before {
 /* 메인 부분 스타일 */
 
 main{
-    /* top: 70px; */
+    right: 100px;
     width: 100%;
-    height: 100vh; /* 뷰포트 높이의 100% */
-    /* background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../../static/images/main_page_bright.jpg') center center;*/
+    height: 100vh;
     background:url('./images/main_page_bright2.png');
     background-size: cover;
     display: flex;
-    /* flex-direction: column; */
-    justify-content: center; /* flex container, grid container에서 요소끼리 어떻게 띄울지 지정 */
-    align-items: center; /* 직계 자손들의 align-self값을 그룹으로 지정. flex에서는 교차축으로, grid에서는 block axis로. */
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .contents-container{
+    display: grid;
+    grid-template-columns: 100px 960px;
+    grid-template-rows: 100px 512px;
     background-color: transparent;
-    width: 70%;
-    display: flex;
-    flex-direction: column; /* stack vertically */
-    justify-content: center; /* center horizontally */
-    align-items: center; /* center vertically */
-    text-align: center;
 }
 
 .text-container{
+    display: flex;
+    flex-direction: column;
     text-align: center;
+    align-items: center;
+    justify-content: center;
+
+    grid-column: 2/3;
+    grid-row: 1/2;
     background-color: transparent;
-    width: 70%;
-    margin-top: 100px;
-    margin-bottom: 30px;
 }
 
 .bookmark-container{
-    margin-left: -70%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: end;
+    justify-content: center;
+
+    grid-column: 1/2;
+    grid-row: 2/3;
     background-color: transparent;
-    width: 100px;
 }
 
 .image-container{
+    grid-column: 2/3;
+    grid-row: 2/3;
     background-color: transparent;
     object-fit : cover;
-    /* width: 70%; */
+    width: 100%;
+    height: 100%;
 }
 
 main a.detail_news_url button{
     border: transparent;
-    background-color: #A4D0A4;
+    border-radius: 5px 0 0 5px;
+
+    width: 35px;
+    height: 85px;
+    background-color: #FFF8D6;
     font-size: 1rem;
-    text-decoration: none;
     font-weight: 700;
-    position: relative;
     z-index: 1;
-}
-
-main a.detail_news_url button::before {
-    border: 2px solid #A4D0A4;
-    border-radius: 0 5px 0 0;
-    border-style: solid solid hidden solid;
-    content: '뉴스';
-    color: transparent;
-    background-color: #A4D0A4;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 150%;
-    height: 20px;
-    z-index: 0;
     transition: all .3s ease-in-out;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-main a.detail_news_url button:hover::before {
-    color: white;
-    bottom: 0;
-    height: 35px;
+main a.detail_news_url button:hover {
+    width: 55px;
 }
-
-
-
 
 main a.detail_books_url button{
     border: transparent;
-    background-color: #A4D0A4;
+    border-radius: 5px 0 0 5px;
+    width: 35px;
+    height: 85px;
+    background-color: #FFF8D6;
     font-size: 1rem;
-    text-decoration: none;
     font-weight: 700;
-    position: relative;
     z-index: 1;
-}
-
-main a.detail_books_url button::before {
-    border: 2px solid #A4D0A4;
-    border-radius: 0 5px 0 0;
-    border-style: solid solid hidden solid;
-    content: '도서';
-    color: transparent;
-    background-color: #A4D0A4;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 150%;
-    height: 20px;
-    z-index: 0;
     transition: all .3s ease-in-out;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
 
-main a.detail_books_url button:hover::before {
-    color: white;
-    bottom: 0;
-    height: 35px;
+main a.detail_books_url button:hover {
+    width: 55px;
 }
