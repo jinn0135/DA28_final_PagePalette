@@ -1,5 +1,5 @@
 from django import forms
-from .models import UserInfo, UserOption
+from .models import UserInfo, UserOption, BookOption
 
 class SignupForm(forms.ModelForm):
     gender = forms.ChoiceField(choices=UserInfo.GENDER_CHOICES, widget=forms.Select(), required=True)
@@ -33,3 +33,13 @@ class SubscribeForm(forms.ModelForm):
         model = UserOption
         db_table = 'user_option'
         fields = ['email','reception_time','weekend','book_service']
+
+class BookOptionForm(forms.ModelForm):
+    book_service = True
+    large_category = forms.ChoiceField(choices=BookOption.LARGE_CAT_CHOICES, required=True)
+    middle_category = forms.ChoiceField(choices=BookOption.MIDDLE_CAT_CHOICES, required=True)
+    selected_book_isbn = forms.CharField(widget=forms.Select(), required=True)
+    class Meta:
+        model = BookOption
+        db_table = 'book_option'
+        fields = ['email', 'book_service', 'large_category', 'middle_category', 'selected_book_isbn']

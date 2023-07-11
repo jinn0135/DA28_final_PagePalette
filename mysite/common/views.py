@@ -6,7 +6,7 @@ import pandas as pd
 # from django.views import View
 # from django.core.exceptions import ValidationError
 # from django.db.models import Q
-from .models import UserInfo, UserOption
+from .models import UserInfo, UserOption, BookOption
 from .forms import SignupForm, SubscribeForm
 
 # Create your views here.
@@ -89,7 +89,7 @@ def Subscribe(request):
 from .select_books import sortBook
 def subscribe_book(request):
     email = request.session.get('user_id')
-    book_service = '1'
+    book_service = True
     # to DB
     return render(request, 'common/subscribe_book.html', {'result':''})
 
@@ -108,10 +108,11 @@ def subscribe_book2(request):
     for g1_id, g2ids in genrid_dic.items():
         for g2_id in g2ids:
             input_genre = request.POST.get('{}_{}'.format(g1_id,g2_id),'')
-            if input_genre == '': continue
+            if input_genre=='': continue
             else:
                 g1s.append(id2g[g1_id])
                 g2s.append(input_genre)
+
 
     large_category = ','.join(g1s)
     middle_category = ','.join(g2s)
@@ -124,6 +125,24 @@ def subscribe_book2(request):
         books.append({'img_url': row.img,'title': row.title,
                       'author': row.author,'isbn': row.isbn,
                       'order': row.order})
+
+    email = request.session.get('user_id')
+    user = UserInfo.objects.get(email=email)  # UserInfo 인스턴스 가져오기
+    book_service = True
+    #large_category = ','.join(g1s)
+    #middle_category = ','.join(g2s)
+    #selected_book_isbn = request.POST.get('selected_book_isbn', '')
+
+    # BookOption 모델에 값 저장
+    book_option, created = BookOption.objects.update_or_create(
+        email=user,
+        book_service = True,
+        defaults={
+            'large_category': large_category,
+            'middle_category': middle_category,
+            #'selected_book_isbn': selected_book_isbn
+        }
+    )
     return render(request, 'common/subscribe_book.html', {'result':books})
 
 def subscribe_success(request):
@@ -133,8 +152,17 @@ def subscribe_success(request):
         if title != '':
             titles.append(str(int(title.split('.')[0])))
     selected_book_isbn = ','.join(titles)
+    email = request.session.get('user_id')
+    user = UserInfo.objects.get(email=email)
+
+    # BookOption 모델에 값 저장
+    book_option, created = BookOption.objects.update_or_create(
+       email=user,
+        defaults={
+            'selected_book_isbn': selected_book_isbn
+        }
+    )
 
     msg = '뉴스와 도서 구독이 완료되었습니다.'
     return render(request, 'common/subscribe_success.html', {'msg':msg})
-
 

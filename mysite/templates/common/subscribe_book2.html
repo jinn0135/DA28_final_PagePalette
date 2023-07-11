@@ -1,0 +1,80 @@
+{% extends 'subscribe_base.html' %}
+{% block content %}
+
+<main>
+    <h1>각 장르별로 한권씩 고르세요.
+        <br>
+        <h4>(단, 하나의 장르만 선택 시 두 권)</h4>
+    </h1>
+
+    <div class="output-box">
+        <form action="http://127.0.0.1:8000/common/subscribe_book/book2/success/" name="select_box2" method="post">
+            {% csrf_token %}
+            <center>
+                <table id="Table">
+                    {% for book in result %}
+                        {% if forloop.counter0|divisibleby:4 %}
+                            <tr>
+                                <td>
+                                    <div class="grid-container">
+                                        <h3 class="grid-item">{{ book.order }}<input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
+
+                                        <h4 class="grid-item">{{ book.title }}</h4>
+                                        <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
+                                        <p class="grid-item">{{ book.author }}</p>
+                                    </div>
+                                </td>
+                        {% elif forloop.counter0|add:"1"|divisibleby:4 or forloop.last %}
+                            <td>
+                                <div class="grid-container">
+                                    <h3 class="grid-item">{{ book.order }}<input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
+
+                                    <h4 class="grid-item">{{ book.title }}</h4>
+                                    <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
+                                    <p class="grid-item">{{ book.author }}</p>
+                                </div>
+                            </td>
+                        {% else %}
+                               <td>
+                                <div class="grid-container">
+                                    <h3 class="grid-item">{{ book.order }}<input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
+
+                                    <h4 class="grid-item">{{ book.title }}</h4>
+                                    <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
+                                    <p class="grid-item">{{ book.author }}</p>
+                                </div>
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </center>
+            {% if result %}
+                <input type="submit" value="구독하기" name="select_books" class="submit-button">
+            {% endif %}
+        </form>
+    </div>
+
+
+    <script>
+        const Div = document.querySelector('#Div');
+        function multiSelect(value) {
+            if (value === "OPEN") {
+                Div.style.visibility = "visible";
+            } else {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                var checkedCount = 0;
+                checkboxes.forEach(function (checkbox) {
+                    if (checkbox.checked) {
+                        checkedCount++;
+                    }
+                });
+                if (checkedCount > 4) {
+                    alert("최대 4개까지 선택할 수 있습니다.");
+                    return false;
+                }
+                Div.style.visibility = "hidden";
+            }
+        }
+    </script>
+</main>
+{% endblock %}
