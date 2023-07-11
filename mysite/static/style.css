@@ -226,6 +226,36 @@ main a>button:hover{
     text-align: right;
 }
 
+.subs-typing-list{ /* 구독하기 박스 내의 요소들 정렬 */
+    height: 400px;
+    display: grid;
+    align-content: space-evenly;
+    justify-content: center;
+    text-align: center;
+}
+
+.subs-typing-list input[type="radio"] {
+    display: none;
+}
+
+.subs-typing-list input[type="radio"] + label {
+    display: inline-block;
+    padding: 15px 10px;
+    border: 1px solid #dfdfdf;
+    background-color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+
+.subs-typing-list input[type="radio"]:checked + label {
+    background-color: #A4D0A4;
+    color: #ffffff;
+}
+
+.typing-list > li:nth-last-child(1){
+    text-align: center;
+}
+
 .input-form{ /* 이메일, 비밀번호, 드롭다운 등 입력칸의 스타일 지정 */
     text-align: center;
     font-size: 1rem;
@@ -235,10 +265,6 @@ main a>button:hover{
     border-radius: 5px;
     border: 2px solid #A4D0A4;
     background: transparent;
-}
-
-.typing-list > li:nth-last-child(1){
-    text-align: center;
 }
 
 .dropdown-list{ /* 회원가입 > 성별, 연령대 드롭다운 스타일 지정 */
@@ -289,32 +315,6 @@ form > li:nth-last-child(1){ /* form태그가 포함하는 li요소들 중 마�
     color: black;
     text-align: left;
     padding: 10px 10px 0 10px;
-}
-
-.typing-list{ /* 구독하기 박스 내의 요소들 정렬 */
-    height: 400px;
-    display: grid;
-    align-content: space-evenly;
-    justify-content: center;
-    text-align: center;
-}
-
-.typing-list input[type="radio"] {
-    display: none;
-}
-
-.typing-list input[type="radio"] + label {
-    display: inline-block;
-    padding: 15px 10px;
-    border: 1px solid #dfdfdf;
-    background-color: #ffffff;
-    text-align: center;
-    cursor: pointer;
-}
-
-.typing-list input[type="radio"]:checked + label {
-    background-color: #A4D0A4;
-    color: #ffffff;
 }
 
 .subscribe-submit-button { /* 로그인, 회원가입, 구독하기 버튼 스타일 지정 */
