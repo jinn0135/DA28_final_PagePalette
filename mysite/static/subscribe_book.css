@@ -103,9 +103,8 @@ header button:hover::before {
 }
 
 main{
-    top: 200px;
     width: 100%;
-    height: 130vh; /* 뷰포트 높이의 100% */
+    height: 100vh; /* 뷰포트 높이의 100% */
     background:url('./images/main_page_bright2.png');
     background-size: 100% 130vh;
     display: flex;
@@ -181,6 +180,7 @@ main{
     height: auto;
 
 }
+
 .grid-item:nth-child(1){ /* 체크박스, 분류 */
     display: flex;
     flex-direction: column;
@@ -189,6 +189,7 @@ main{
     grid-column: 1/2;
     grid-row: 2/3;
 }
+
 .grid-item:nth-child(2){ /* 제목 */
     display: flex;
     flex-direction: column;
@@ -197,7 +198,7 @@ main{
     grid-column: 3/4;
     grid-row: 1/3;
 }
-/* ------------------------------------------------------- */
+
 .grid-item:nth-child(3){ /* 이미지 */
     position: relative;
     top: 10px;
@@ -207,18 +208,6 @@ main{
     grid-row: 1/4;
 }
 
-.grid-item:nth-child(3):hover{ /* 이미지 */
-    background: linear-gradient(180deg, #FFF 0%, #000 100%);
-
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    grid-column: 2/3;
-    grid-row: 1/4;
-}
-/* ------------------------------------------------------- */
 .grid-item:nth-child(4){ /* 저자 */
     display: flex;
     flex-direction: column;
@@ -230,29 +219,25 @@ main{
 }
 
 td.genre-A {
-    background-color: white;
-    border: 3px solid coral;
+    background-color: rgba(255, 127, 80, 0.3);
     border-radius: 5px;
     padding: 0.5rem;
 }
 
 td.genre-B {
-    background-color: white;
-    border: 3px solid cornflowerblue;
+    background-color: rgba(100, 149, 237, 0.3);
     border-radius: 5px;
     padding: 0.5rem;
 }
 
 td.genre-C {
-    background-color: white;
-    border: 3px solid limegreen;
+    background-color: rgba(50, 205, 50, 0.3);
     border-radius: 5px;
     padding: 0.5rem;
 }
 
 td.genre-D {
-    background-color: white;
-    border: 3px solid lightcoral;
+    background-color: rgba(239, 220, 106, 0.3);
     border-radius: 5px;
     padding: 0.5rem;
 }
