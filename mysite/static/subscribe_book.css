@@ -106,9 +106,8 @@ main{
     top: 200px;
     width: 100%;
     height: 130vh; /* 뷰포트 높이의 100% */
-    /* background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../../static/images/main_page_bright.jpg') center center;*/
     background:url('./images/main_page_bright2.png');
-    background-size: cover;
+    background-size: 100% 130vh;
     display: flex;
     flex-direction: column;
     justify-content: center; /* flex container, grid container에서 요소끼리 어떻게 띄울지 지정 */
@@ -177,7 +176,7 @@ main{
 .grid-container{
     display: grid;
     grid-template-columns: 40px 100px 150px;
-    grid-template-rows: 60px 60px 50px;
+    grid-template-rows: 60px 60px 60px;
     width: 300px;
     height: auto;
 
@@ -204,6 +203,7 @@ main{
     flex-direction: column;
     text-align: center;
     justify-content: center;
+    align-items: center;
     grid-column: 2/3;
     grid-row: 1/4;
 }
@@ -217,22 +217,37 @@ main{
     font-size: small;
 }
 
-td {
+td.genre-A {
     background-color: white;
+    border: 3px solid coral;
+    border-radius: 5px;
     padding: 0.5rem;
-    border: 3px solid #49a949;
-
 }
 
-/*td:nth-child(1) { background: hsl(48, 97%, 69%); }*/
-/*td:nth-child(2) { background: hsl(11, 100%, 68%); }*/
-/*td:nth-child(3) { background: hsl(117, 77%, 34%); }*/
-/*td:nth-child(4) { background: hsl(226, 83%, 44%); }*/
+td.genre-B {
+    background-color: white;
+    border: 3px solid cornflowerblue;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+td.genre-C {
+    background-color: white;
+    border: 3px solid limegreen;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+td.genre-D {
+    background-color: white;
+    border: 3px solid lightcoral;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
 
 .book-img{
     width: 30%;
 }
-
 
 .submit-button { /* 로그인, 회원가입, 구독하기 버튼 스타일 지정 */
     width: 100px;
