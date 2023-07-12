@@ -4,7 +4,7 @@
 {% block content %}
 <main id="main">
     <div class="login-container">
-        <h4>로그인</h4>
+        <h4 class="coding">로그인</h4>
 
         <form method="post" class="post-form" action="{% url 'common:login' %}">
             {% csrf_token %}
@@ -13,15 +13,15 @@
             {% endif %}
             <ul class="typing-list">
                 <li>
-                    <label for="email">이메일 : </label>
+                    <label for="email" class="coding" style="font-weight: bold">이메일 : </label>
                     <input type="text" name="email" id="email" value="{{ form.email.value|default_if_none:'' }}" placeholder="example@pagepalette.com" class="input-form">
                 </li>
                 <li>
-                    <label for="pw">비밀번호 : </label>
+                    <label for="pw" class="coding" style="font-weight: bold">비밀번호 : </label>
                     <input type="password" name="pw" id="pw" placeholder="비밀번호 입력" class="input-form">
                 </li>
                 <li>
-                    <button type="submit" value="로그인" class="submit-button">로그인</button>
+                    <button type="submit" value="로그인" class="submit-button coding">로그인</button>
                 </li>
             </ul>
         </form>
