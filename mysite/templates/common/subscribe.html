@@ -3,39 +3,39 @@
 
 <main id="main">
     <div class="subscribe-container">
-        <h4>구독하기</h4>
+        <h4 class="coding">구독하기</h4>
         <form method="POST" action="{% url 'common:subscribe' %}">
             {% csrf_token %}
             <ul class="subs-typing-list" style="margin-top:30px">
                 <div>
-                    <label for="email"><strong>나의 이메일 :</strong></label>
+                    <label for="email"><strong class="coding">나의 이메일 :</strong></label>
                     <input style="border: none; outline: none; width: 200px; text-align:center;" type="email" id="email" name="email" value="{{ request.session.user_id }}" readonly>
                 </div>
                 <div>
-                    <label for="reception_time"><strong>메일 수신 시간</strong></label><br>
+                    <label for="reception_time"><strong class="coding">메일 수신 시간</strong></label><br>
                     <div style="margin-top:10px;">
                         {% for value, label in form.reception_time.field.choices %}
                             <input type="radio" id="time_{{ value }}" name="reception_time" value="{{ value }}" required>
-                            <label for="time_{{ value }}">{{ label }}</label>
+                            <label for="time_{{ value }}" class="gothic">{{ label }}</label>
                         {% endfor %}
                     </div>
                 </div>
                 <div>
-                    <label for="weekend"><strong>주말 수신 선택</strong></label><br>
+                    <label for="weekend"><strong class="coding">주말 수신 선택</strong></label><br>
                     <div style="margin-top:10px;">
                         {% for value, label in form.weekend.field.choices %}
                         <input type="radio" id="weekend_{{ value }}" name="weekend" value="{{ value }}" required>
-                        <label for="weekend_{{ value }}">{{ label }}</label>
+                        <label for="weekend_{{ value }}" class="gothic">{{ label }}</label>
                         {% endfor %}
                     </div>
                 </div>
                 <div>
                     <div style="margin-top:10px; font-size:20px">
-                        <label for="book_service"><strong>월 1900원에 메일로</strong></label><br>
+                        <label for="book_service"><strong class="gothic" style="font-weight: bold">월 1990원에 메일로</strong></label><br>
                     </div>
                     <div style="margin-top:10px;">
-                        <button style="margin-right:10px;" class="subscribe-submit-button" type="submit"  name="book_service" value='0'>뉴스만<br>받아볼래요.</button>
-                        <button class="subscribe-submit-button" type="submit" name="book_service" value='1'>책도 같이<br>받아볼래요.</button>
+                        <button style="margin-right:10px; font-weight: bold; line-height: 20px" class="subscribe-submit-button coding" type="submit"  name="book_service" value='0'>뉴스만<br>받아볼래요.</button>
+                        <button style="font-weight: bold; line-height: 20px" class="subscribe-submit-button coding" type="submit" name="book_service" value='1'>책도 같이<br>받아볼래요.</button>
                     </div>
                 </div>
             </ul>
