@@ -2,13 +2,13 @@
 {% block content %}
     <main id="main">
         <div class="container">
-            <h2 style="font-size: 40px;">매일 메일 트렌드 키워드를 확인하세요</h2>
-            <p>원하신다면, 맞춤 도서 추천도 해드려요</p>
+            <h2 style="font-size: 40px; text-shadow: 1px 1px 1px #a2a2a2;" class="coding">매일 <span style="color: darkgreen" class="coding">메일</span> 트렌드 키워드를 확인하세요</h2>
+            <p class="coding" style="font-weight: bold;">원하신다면, 맞춤 도서 추천도 해드려요</p>
             <!-- <a href="www.google.com"><img src="./images/buttons/red.png" alt="구독하기"></a>
             <a href="www.google.com"><img src="./images/buttons/blue.png" alt="구독하기"></a> -->
 
-            <a href="{% url 'main:detail_news' %}" style="padding-right: 50px"><button>뉴스</button></a>
-            <a href="{% url 'main:detail_books' %}"><button>도서 큐레이션</button></a>
+            <a href="{% url 'main:detail_news' %}" style="padding-right: 50px"><button class="coding">뉴스</button></a>
+            <a href="{% url 'main:detail_books' %}"><button class="coding">도서 큐레이션</button></a>
             <!-- <button class="mouse"><img src="./images/buttons/blue.png" alt=""></button> -->
         </div>
     </main>
