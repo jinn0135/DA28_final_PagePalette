@@ -88,17 +88,17 @@ header button::before {
     background-color: #A4D0A4 ;
     position: absolute;
     left: 0;
-    bottom: 3px;
+    bottom: 1px; /* 높이 */
     width: 100%;
-    height: 4px;
+    height: 3px; /* 차오르는 높이 */
     z-index: -1;
     transition: all .3s ease-in-out;
 }
 
 header button:hover::before {
     color: white;
-    bottom: 3px;
-    height: 80%;
+    /*bottom: 3px;*/
+    height: 100%;
 }
 
 /* 메인 부분 스타일 */
@@ -107,7 +107,7 @@ main{
     width: 100%;
     height: 100vh; /* 뷰포트 높이의 100% */
     /* background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.4)), url('../../static/images/main_page_bright.jpg') center center;*/
-    background:url('./images/main_page_bright2.png');
+    background:url('./images/main_page_bright.jpg');
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -232,10 +232,12 @@ main a>button:hover{
     align-content: space-evenly;
     justify-content: center;
     text-align: center;
+    border-radius: 5px;
 }
 
 .subs-typing-list input[type="radio"] {
     display: none;
+    border-radius: 5px;
 }
 
 .subs-typing-list input[type="radio"] + label {
@@ -245,11 +247,13 @@ main a>button:hover{
     background-color: #ffffff;
     text-align: center;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .subs-typing-list input[type="radio"]:checked + label {
     background-color: #A4D0A4;
     color: #ffffff;
+    border-radius: 5px;
 }
 
 .typing-list > li:nth-last-child(1){
@@ -323,7 +327,7 @@ form > li:nth-last-child(1){ /* form태그가 포함하는 li요소들 중 마�
     height: 80px;
     flex-shrink: 0;
     border-radius: 5px;
-    background-color: #A4D0A4;
+    background-color: white;
     border: 1px solid #FFF8D6;
     font-weight: bold;
     box-shadow: inset 0 0 0 0 #A4D0A4; /* 시작 색상 */
@@ -334,6 +338,6 @@ form > li:nth-last-child(1){ /* form태그가 포함하는 li요소들 중 마�
 }
 
 .subscribe-submit-button:hover {
-    box-shadow: inset 200px 0 0 0 #617A55; /* 끝 색상 */
-    color: white; /* 끝 텍스트 색상 */
+    box-shadow: inset 200px 0 0 0 #A4D0A4; /* 끝 색상 */
+    /*color: white; !* 끝 텍스트 색상 *!*/
 }
