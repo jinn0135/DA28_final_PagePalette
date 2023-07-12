@@ -2,9 +2,9 @@
 {% block content %}
 
 <main>
-    <h1 style="padding-top: 50px">각 색상별로 한 권씩 고르세요.
+    <h1 style="padding-top: 50px; line-height: 50px;" class="coding">각 색상별로 한 권씩 고르세요.
         <br>
-        <h4>(단, 하나의 장르만 선택 시 두 권)</h4>
+        <h4 class="coding">(단, 하나의 장르만 선택 시 두 권)</h4>
     </h1>
     <div class="output-box">
         <form action="http://127.0.0.1:8000/common/subscribe_book/book2/success/" name="select_box2" method="post">
@@ -25,9 +25,9 @@
                             {% endif %}
                                     <div class="grid-container">
                                         <h3 class="grid-item"><input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
-                                        <h4 class="grid-item">{{ book.title }}</h4>
+                                        <h4 class="grid-item coding" style="line-height: 20px">{{ book.title }}</h4>
                                         <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
-                                        <p class="grid-item">{{ book.author }}</p>
+                                        <p class="grid-item coding">{{ book.author }}</p>
                                     </div>
                                 </td>
                         {% elif forloop.counter0|add:"1"|divisibleby:4 or forloop.last %}
@@ -43,9 +43,9 @@
                                 <div class="grid-container">
                                     <h3 class="grid-item"><input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
 
-                                    <h4 class="grid-item">{{ book.title }}</h4>
+                                    <h4 class="grid-item coding" style="line-height: 20px">{{ book.title }}</h4>
                                     <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
-                                    <p class="grid-item">{{ book.author }}</p>
+                                    <p class="grid-item coding">{{ book.author }}</p>
                                 </div>
                             </td>
                         {% else %}
@@ -61,9 +61,9 @@
                                 <div class="grid-container">
                                     <h3 class="grid-item"><input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
 
-                                    <h4 class="grid-item">{{ book.title }}</h4>
+                                    <h4 class="grid-item coding" style="line-height: 20px">{{ book.title }}</h4>
                                     <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
-                                    <p class="grid-item">{{ book.author }}</p>
+                                    <p class="grid-item coding">{{ book.author }}</p>
                                 </div>
                             </td>
                         {% endif %}
@@ -71,7 +71,7 @@
                 </table>
             </center>
             {% if result %}
-                <input type="submit" value="구독하기" name="select_books" class="submit-button">
+                <input type="submit" value="구독하기" name="select_books" class="submit-button coding">
             {% endif %}
         </form>
     </div>
