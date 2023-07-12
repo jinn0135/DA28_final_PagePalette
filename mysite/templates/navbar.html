@@ -10,17 +10,17 @@
             <ul>
                 {% if request.session.user_id %}
                 <li>
-                    <a href="{% url 'common:subscribe' %}"><button>구독하기</button></a>
+                    <a href="{% url 'common:subscribe' %}"><button class="coding">구독하기</button></a>
                 </li>
                 <li>
-                    <a href="{% url 'common:logout' %}"><button>로그아웃</button></a>
+                    <a href="{% url 'common:logout' %}"><button class="coding">로그아웃</button></a>
                 </li>
                 {% else %}
                 <li>
-                    <a href="{% url 'common:login' %}"><button>구독하기</button></a>
+                    <a href="{% url 'common:login' %}"><button class="coding">구독하기</button></a>
                 </li>
                 <li>
-                    <a href="{% url 'common:login' %}"><button>로그인</button></a> / <a href="{% url 'common:signup' %}"><button>회원가입</button></a>
+                    <a href="{% url 'common:login' %}"><button class="coding">로그인</button></a> / <a href="{% url 'common:signup' %}"><button class="coding">회원가입</button></a>
                 </li>
                 {% endif %}
             </ul>
