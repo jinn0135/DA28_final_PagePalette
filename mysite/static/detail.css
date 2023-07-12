@@ -89,17 +89,17 @@ header button::before {
     background-color: #A4D0A4;
     position: absolute;
     left: 0;
-    bottom: 3px;
+    bottom: 1px; /* 높이 */
     width: 100%;
-    height: 4px;
+    height: 3px; /* 차오르는 높이 */
     z-index: -1;
     transition: all .3s ease-in-out;
 }
 
 header button:hover::before {
     color: white;
-    bottom: 3px;
-    height: 80%;
+    /*bottom: 3px;*/
+    height: 100%;
 
 }
 
@@ -120,7 +120,7 @@ main{
 .contents-container{
     display: grid;
     grid-template-columns: 50px 960px;
-    grid-template-rows: 100px 260px 110px 110px;
+    grid-template-rows: 100px 260px 95px 95px;
     background-color: transparent;
 }
 
@@ -162,7 +162,7 @@ main a.detail_news_url button{
     border-radius: 5px 0 0 5px;
 
     width: 35px;
-    height: 85px;
+    height: 65px;
     background-color: #aaceaa;
     font-size: 1rem;
     font-weight: 700;
@@ -179,7 +179,7 @@ main a.detail_books_url button{
     border: transparent;
     border-radius: 5px 0 0 5px;
     width: 35px;
-    height: 85px;
+    height: 65px;
     background-color: #aaceaa;
     font-size: 1rem;
     font-weight: 700;
