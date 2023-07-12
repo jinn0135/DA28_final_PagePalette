@@ -2,9 +2,9 @@
 {% block content %}
 
 <main>
-    <h1 style="padding-top: 100px">각 장르별로 한권씩 고르세요.
+    <h1 style="padding-top: 50px">각 색상별로 한 권씩 고르세요.
         <br>
-        <h4>(단, 하나의 장르만 선택 시 두 권) </h4>
+        <h4>(단, 하나의 장르만 선택 시 두 권)</h4>
     </h1>
     <div class="output-box">
         <form action="http://127.0.0.1:8000/common/subscribe_book/book2/success/" name="select_box2" method="post">
@@ -24,7 +24,7 @@
                                 <td class="genre-D">
                             {% endif %}
                                     <div class="grid-container">
-                                        <h3 class="grid-item">{{ book.order }}<input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
+                                        <h3 class="grid-item"><input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
                                         <h4 class="grid-item">{{ book.title }}</h4>
                                         <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
                                         <p class="grid-item">{{ book.author }}</p>
@@ -41,7 +41,7 @@
                                 <td class="genre-D">
                             {% endif %}
                                 <div class="grid-container">
-                                    <h3 class="grid-item">{{ book.order }}<input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
+                                    <h3 class="grid-item"><input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
 
                                     <h4 class="grid-item">{{ book.title }}</h4>
                                     <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
@@ -59,7 +59,7 @@
                                 <td class="genre-D">
                             {% endif %}
                                 <div class="grid-container">
-                                    <h3 class="grid-item">{{ book.order }}<input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
+                                    <h3 class="grid-item"><input type="checkbox" value="{{ book.isbn }}" name="count{{ forloop.counter }}"></h3>
 
                                     <h4 class="grid-item">{{ book.title }}</h4>
                                     <img src="{{ book.img_url }}" alt="Book Image" class="grid-item">
