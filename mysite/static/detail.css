@@ -120,7 +120,7 @@ main{
 .contents-container{
     display: grid;
     grid-template-columns: 50px 960px;
-    grid-template-rows: 100px 260px 95px 95px;
+    grid-template-rows: 100px 260px 110px 110px;
     background-color: transparent;
 }
 
@@ -147,16 +147,69 @@ main{
     grid-row: 2/3;
     background-color: transparent;
 }
-
+/* ------------------------------------------------------- */
 .image-container{
+    display: grid;
+    grid-template-columns: 290px 670px;
+    grid-template-rows: 220px 220px 40px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50px;
+    box-shadow: 13px 13px 13px 0 rgba(0, 0, 0, 0.3);
+
     grid-column: 2/3;
     grid-row: 2/5;
-    background-color: transparent;
     object-fit : cover;
     width: 100%;
     height: 100%;
 }
 
+.grid-item-mainImg{
+    grid-column: 1/2;
+    grid-row: 1/3;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.grid-item-text{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-item-subImg{
+    grid-column: 2/3;
+    grid-row: 2/3;
+
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px 0 0;
+}
+
+.grid-item-exMsg1{
+    text-align: center;
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+
+.grid-item-exMsg2{
+    text-align: center;
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+/* ------------------------------------------------------- */
 main a.detail_news_url button{
     border: transparent;
     border-radius: 5px 0 0 5px;
