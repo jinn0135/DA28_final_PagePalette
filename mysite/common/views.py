@@ -143,7 +143,7 @@ def subscribe_book2(request):
             #'selected_book_isbn': selected_book_isbn
         }
     )
-    return render(request, 'common/subscribe_book.html', {'result':books})
+    return render(request, 'common/subscribe_book2.html', {'result':books})
 
 def subscribe_success(request):
     titles = []
